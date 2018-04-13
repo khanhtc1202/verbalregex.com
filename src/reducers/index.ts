@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux';
 
-import Counter from './Counter';
+import RegexParser from "./RegexParser";
 
 export default combineReducers({
-  count: Counter
+  regexString: RegexParser
 });
