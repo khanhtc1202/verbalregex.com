@@ -1,7 +1,7 @@
 {
-  "name": "react-redux-ts",
+  "name": "verbal-regex",
   "version": "1.0.0",
-  "description": "",
+  "description": "verbal regex client",
   "main": "index.js",
   "dependencies": {
     "react": "16.3.1",
