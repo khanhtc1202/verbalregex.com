@@ -1,4 +1,4 @@
-var VerEx = require("verbal-expressions");
+const VerEx = require("verbal-expressions");
 
 export type RegexParseAction = {
     type: "PARSE",
@@ -6,7 +6,10 @@ export type RegexParseAction = {
 };
 
 export const parse = (verbalRegex: string): RegexParseAction => {
-    var regexParser = VerEx();
+    const regexParser = VerEx();
+
+    // TODO split verbalRegex to material (strip enter and space before split)
+
 
     const regexString: string = regexParser.toString() + 'sample' + verbalRegex;
     return {
