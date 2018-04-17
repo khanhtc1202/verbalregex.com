@@ -28,9 +28,10 @@ export default class RegexParser extends React.Component<Props, State> {
         return (
             <div>
                 <textarea onChange={this.onChange.bind(this)} />
+                <br/>
                 <input type="button" value="parse" onClick={this.onClick.bind(this)} />
-                <h2>Parsed string</h2>
-                <p>{regexString}</p>
+                <hr/>
+                <p><strong>Regex:</strong> {regexString}</p>
             </div>
         );
     }

@@ -1,17 +1,23 @@
-const VerEx = require("verbal-expressions");
+import {VerbalStringParser} from "../infrastructure/VerbalRegexParser";
+import {State} from "../state";
+import {Dispatch} from "redux";
+import {raiseModal} from "./DialogRaiseAction";
 
-export type RegexParseAction = {
-    type: "PARSE",
-    regexString: string
+export const parse = (verbalRegex: string): any => {
+
+    return (dispatch:Dispatch<State>) => {
+        try {
+            const regexString: string = VerbalStringParser(verbalRegex);
+            dispatch(throwRegexString(regexString));
+        } catch (e) {
+            dispatch(throwRegexString(''));
+            dispatch(raiseModal(e.toString()));
+        }
+    };
+
 };
 
-export const parse = (verbalRegex: string): RegexParseAction => {
-    const regexParser = VerEx();
-
-    // TODO split verbalRegex to material (strip enter and space before split)
-
-
-    const regexString: string = regexParser.toString() + 'sample' + verbalRegex;
+const throwRegexString = (regexString: string): any => {
     return {
         type: "PARSE",
         regexString: regexString

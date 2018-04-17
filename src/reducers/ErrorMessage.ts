@@ -4,8 +4,8 @@ const initialState: string = '';
 
 export default (state: string = initialState, action: Action): string => {
     switch (action.type) {
-        case "PARSE": {
-            return action.regexString
+        case "DIALOG_RAISE": {
+            return action.message
         }
         default: {
             return state;
