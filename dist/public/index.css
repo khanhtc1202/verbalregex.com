@@ -53,7 +53,7 @@ h3{
 }
 #main{
     width:90%;
-    height: 70%;
+    height: 60%;
     margin-left:auto;
     margin-right:auto;
     text-align:center
@@ -131,7 +131,7 @@ code{
     font-weight:bold
 }
 #regex{
-    width:800px
+    flex-grow: 1;
 }
 #options{
     width:80px
@@ -158,6 +158,7 @@ code{
 #test_and_result{
     height: 80%;
     text-align:left;
+    padding: 20px;
 }
 /* #test_string{
     float:left;
@@ -170,7 +171,7 @@ input[type="text"]:focus,#test_string textarea:focus{
 }
 #test_string textarea{
     width:100%;
-    height:125px;
+    height:100%;
     margin-bottom:4px
 }
 #result{
@@ -291,7 +292,11 @@ label,.result_label{
 #modal_birdseed{
     display:none
 }
-#insert_links,#test_settings,#test_settings label{
+#test_settings{
+    float:right;
+    padding-right:8px;
+}
+#insert_links,#test_settings label{
     padding:2px
 }
 #insert_links,#test_settings,#test_settings label{
@@ -369,6 +374,9 @@ body {
     /* padding-top: 20px; */
 }
 #footer{
+    position: fixed;
+    bottom: 0;
+    width: 100%;
     text-align: center;
     padding-bottom: 10px;
     height: 10%;
@@ -386,4 +394,19 @@ body {
 
 .input_text{
     padding-top:0px;
+    height:90%;
+}
+
+.regex_below
+{
+    padding-left: 25px;
+    margin-right:20px;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.flag{
+    flex-basis: auto;
+    width: 50px;
 }
