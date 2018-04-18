@@ -70,7 +70,7 @@ export default class RegexParser extends React.Component<Props, State> {
 
                 <div className="form_controls">
                     <input type="button" value="parse" onClick={this.onClick.bind(this)} />
-                    <a>clear fields</a>
+                    <input type="button" value="clear fields" />
                 </div>
 
             </div>
