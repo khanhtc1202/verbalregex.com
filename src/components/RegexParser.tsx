@@ -61,9 +61,9 @@ export default class RegexParser extends React.Component<Props, State> {
                     </div>
                     <div className="row regex_below flex-container">
                         <span className="slash">/</span>
-                        <input id="regex" name="regex" size={80} tabIndex={1} type="text" value={regexString} />
+                        <input id="regex" name="regex" tabIndex={1} type="text" value={regexString} />
                         <span className="slash">/</span>
-                        <input id="flag" name="flag" size={8} tabIndex={2} type="text" /><br/>
+                        <input id="flag" name="flag" tabIndex={2} type="text" /><br/>
                     </div>
 
                 </div>
