@@ -13,6 +13,7 @@ export default class RegexParser extends React.Component<Props, State> {
 
     constructor(props: Props) {
         super(props);
+        this.state = {verbalRegex: ''};
     }
 
     onChange(e: any): void {
@@ -40,11 +41,11 @@ export default class RegexParser extends React.Component<Props, State> {
                         </div>
                         <div className="row input_text">
                             <div id="test_string" className="col-sm-6">
-                                <textarea className="text_input" onChange={this.onChange.bind(this)}/>
+                                <textarea className="text_input" value={this.state.verbalRegex} onChange={this.onChange.bind(this)}/>
                             </div>
 
                             <div id="result" className="col-sm-6">
-                                <textarea id="match_string" className="text_input" />
+                                <textarea id="match_string" value="" className="text_input" />
                             </div>
                         </div>
 
