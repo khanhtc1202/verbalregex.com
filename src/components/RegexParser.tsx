@@ -4,6 +4,7 @@ type Props = {
     regexString: string;
     flagString: string;
     parse: (verbalRegex: string) => void;
+    clear: () => void;
 }
 
 type State = {
@@ -23,6 +24,11 @@ export default class RegexParser extends React.Component<Props, State> {
 
     onClick(): void {
         this.props.parse(this.state.verbalRegex);
+    }
+
+    onClear(): void {
+        this.setState({verbalRegex: ''});
+        this.props.clear();
     }
 
     render(): React.ReactNode {
@@ -73,7 +79,7 @@ export default class RegexParser extends React.Component<Props, State> {
 
                 <div className="form_controls">
                     <input type="button" value="parse" onClick={this.onClick.bind(this)} />
-                    <input type="button" value="clear fields" />
+                    <input type="button" value="clear fields" onClick={this.onClear.bind(this)} />
                 </div>
 
             </div>

@@ -7,6 +7,9 @@ export default (state: string = initialState, action: Action): string => {
         case "PARSE": {
             return action.regexString
         }
+        case "CLEAR_TEXT": {
+            return action.regexString
+        }
         default: {
             return state;
         }

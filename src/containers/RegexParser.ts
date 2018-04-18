@@ -9,9 +9,11 @@ import {
 
 import {State} from "../state";
 import {parse} from "../actions/RegexParseAction";
+import {clearText} from "../actions/ClearTextAction";
 
 type DispatchProps = {
   parse: (verbalRegex: string) => void;
+  clear: () => void;
 };
 
 const mapStateToProps: MapStateToProps<any, any, State> = (state) => {
@@ -32,6 +34,9 @@ const mapDispatchToProps: MapDispatchToProps<DispatchProps, {}> = (
   return {
     parse: (verbalRegex: string) => {
       dispatch(parse(verbalRegex));
+    },
+    clear: () => {
+      dispatch(clearText());
     }
   };
 };

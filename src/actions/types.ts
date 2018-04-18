@@ -1,5 +1,6 @@
 export type Action = RegexParseAction |
-                     DialogRaiseAction;
+                     DialogRaiseAction |
+                     ClearTextAction;
 
 type RegexParseAction = {
     type: "PARSE",
@@ -10,4 +11,10 @@ type RegexParseAction = {
 type DialogRaiseAction = {
     type: "DIALOG_RAISE",
     message: string
+}
+
+type ClearTextAction = {
+    type: "CLEAR_TEXT",
+    regexString: string,
+    flagString: string
 }
