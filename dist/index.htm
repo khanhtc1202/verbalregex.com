@@ -25,71 +25,14 @@
 
 <div id="main">
 
-
-    <div id="inner" class="gainlayout">
-
-        <div id="ajax_loader_wrapper" style="display: none;"><img alt="Ajax-loader" src="./public/ajax-loader.gif"></div>
-
-        <div id="form_wrapper">
-            <div id="test_and_result">
-                <div class="row input_title">
-                    <div class="col-sm-6">
-                        <label>Editor:</label>
-                    </div>
-                    <div class="col-sm-6">
-                        <label>Input string:</label>
-                    </div>
-                </div>
-                <div class="row input_text">
-                    <div id="test_string" class="col-sm-6">
-                        <textarea class="text_input"></textarea>
-
-                    </div>
-
-                    <div id="result" class="col-sm-6">
-
-                        <textarea id="match_string" class="text_input">
-                        </textarea>
-                    </div>
-                </div>
-
-                <div id="row test_controls">
-                    <span id="test_settings">
-                      <label>Wrap words <input checked="checked" id="word_wrap" name="word_wrap" type="checkbox" value="1"></label>
-                      <label>Show invisibles <input id="show_invisibles" name="show_invisibles" type="checkbox" value="1"></label>
-                    </span>
-                </div>
-
-            </div>
-            <div class="row input_title regex_below">
-                <label id="regex_label" for="regex">Regular expression:</label>
-            </div>
-            <div class="row regex_below flex-container">
-                <span class="slash">/</span>
-                <input id="regex" name="regex" size="80" tabindex="1" type="text">
-                <span class="slash">/</span>
-                <input  id="flag" name="flag" size="8" tabindex="2" type="text"><br>
-            </div>
-
-        </div>
-
-        <div id="ajax_note" style="display: none;"></div>
-
-        <div class="form_controls">
-            <a >Compile</a>
-            <a >clear fields</a>
-        </div>
-
-    </div>
+    <div id="app" />
+    <script src="app.js"></script>
 
 </div>
 
 <div id="footer">
     <div id="birdseed" class="birdseed">
-
-        <p>
-            Powered by <a href="https://github.com/VerbalExpressions">VerbalExpression</a>.
-        </p>
+        <p>Powered by <a href="https://github.com/VerbalExpressions">VerbalExpression</a>.</p>
     </div>
 </div>
 
