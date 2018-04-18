@@ -8,18 +8,27 @@ export const parse = (verbalRegex: string): any => {
     return (dispatch:Dispatch<State>) => {
         try {
             const regexString: string = VerbalStringParser(verbalRegex);
-            dispatch(throwRegexString(regexString));
+            var flagPart = regexString.split("/").pop();
+            var regexPart = '';
+            if(flagPart != undefined){
+                regexPart = regexString.substr(1,regexString.length - 2 - flagPart.length);
+            }
+            else{
+                regexPart = regexString.substr(1,regexString.length - 1);
+            }
+            dispatch(throwRegexString(regexPart, flagPart));
         } catch (e) {
-            dispatch(throwRegexString(''));
+            dispatch(throwRegexString('',''));
             dispatch(raiseModal(e.toString()));
         }
     };
 
 };
 
-const throwRegexString = (regexString: string): any => {
+const throwRegexString = (regexString: string, flagString: string | undefined = ''): any => {
     return {
         type: "PARSE",
-        regexString: regexString
+        regexString: regexString,
+        flagString: flagString
     };
 };

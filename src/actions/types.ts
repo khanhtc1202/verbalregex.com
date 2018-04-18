@@ -3,7 +3,8 @@ export type Action = RegexParseAction |
 
 type RegexParseAction = {
     type: "PARSE",
-    regexString: string
+    regexString: string,
+    flagString: string
 };
 
 type DialogRaiseAction = {

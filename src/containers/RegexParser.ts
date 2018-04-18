@@ -16,11 +16,11 @@ type DispatchProps = {
 
 const mapStateToProps: MapStateToProps<any, any, State> = (state) => {
   const {
-      regexString
+      regexString, flagString
   } = state;
 
   return {
-    regexString
+    regexString, flagString
   };
 };
 

@@ -2,6 +2,7 @@ import * as React from "react";
 
 type Props = {
     regexString: string;
+    flagString: string;
     parse: (verbalRegex: string) => void;
 }
 
@@ -26,6 +27,7 @@ export default class RegexParser extends React.Component<Props, State> {
 
     render(): React.ReactNode {
         const regexString = this.props.regexString;
+        const flagString = this.props.flagString;
         return (
             <div id="inner" className="gainlayout">
 
@@ -45,7 +47,7 @@ export default class RegexParser extends React.Component<Props, State> {
                             </div>
 
                             <div id="result" className="col-sm-6">
-                                <textarea id="match_string" value="" className="text_input" />
+                                <textarea id="match_string" className="text_input" />
                             </div>
                         </div>
 
@@ -64,7 +66,7 @@ export default class RegexParser extends React.Component<Props, State> {
                         <span className="slash">/</span>
                         <input id="regex" name="regex" tabIndex={1} type="text" value={regexString} />
                         <span className="slash">/</span>
-                        <input id="flag" name="flag" tabIndex={2} type="text" /><br/>
+                        <input id="flag" name="flag" tabIndex={2} type="text" value={flagString} /><br/>
                     </div>
 
                 </div>
