@@ -53,10 +53,11 @@ h3{
 }
 #main{
     width:90%;
-    height: 60%;
+    height: 80%;
     margin-left:auto;
     margin-right:auto;
-    text-align:center
+    text-align:center;
+    position: relative;
 }
 #inner{
     border:20px solid #e6e6e6;
@@ -226,6 +227,17 @@ label,.result_label{
     padding-bottom:10px;
     padding-top:15px
 }
+.form_controls input{
+    background-color:#6E6E6E;
+    padding:3px 10px 3px 10px;
+    margin-left:10px;
+    font-size:11px;
+    letter-spacing:1px;
+    text-decoration:none
+}
+.form_controls input:hover{
+    background-color:#8B8B8B
+}
 .form_controls a{
     background-color:#6E6E6E;
     padding:3px 10px 3px 10px;
@@ -252,27 +264,27 @@ label,.result_label{
     padding-right:18px
 }
 .birdseed{
-    margin-top:20px;
     color:#ffffff;
-    font-size:14px
+    font-size:14px;
+    text-align: center;
 }
 .birdseed a{
     color:#F2F179
 }
 .birdseed_note{
     font-size:12px;
-    color:#9F9F9F
+    color:#9F9F9F;
 }
 .birdseed_note a{
-    text-decoration:none
+    text-decoration:none;
 }
 #ajax_loader_wrapper{
     position:absolute;
     bottom:10px;
-    right:10px
+    right:10px;
 }
 #ad{
-    margin-top:20px
+    margin-top:20px;
 }
 #regex_options{
     margin-top:8px;
@@ -280,53 +292,53 @@ label,.result_label{
     margin-right:10px;
     border-top:1px solid #cecece;
     padding-top:4px;
-    font-size:12px
+    font-size:12px;
 }
 #regex_options p{
-    margin:3px
+    margin:3px;
 }
 #regex_options code{
     margin-left:25px;
-    margin-right:8px
+    margin-right:8px;
 }
 #modal_birdseed{
-    display:none
+    display:none;
 }
 #test_settings{
     float:right;
     padding-right:8px;
 }
 #insert_links,#test_settings label{
-    padding:2px
+    padding:2px;
 }
 #insert_links,#test_settings,#test_settings label{
     font-family:futura, helvetica, arial;
-    font-size:11px
+    font-size:11px;
 }
 #test_settings input{
     padding:0px;
     margin:0px;
-    margin-left:2px
+    margin-left:2px;
 }
 #test_settings label{
     color:#BFBFBF;
     letter-spacing:0px;
-    padding-left:9px
+    padding-left:9px;
 }
 #test_settings label:nth-child(1){
-    padding-left:0px
+    padding-left:0px;
 }
 #insert_links{
     padding-top:6px;
     font-size:10px;
-    color:#283A26
+    color:#283A26;
 }
 #insert_links span{
     background-color:#CDF3C9;
-    padding:2px 2px 2px 3px
+    padding:2px 2px 2px 3px;
 }
 #test{
-    margin-top:1px
+    margin-top:1px;
 }
 #notice{
     margin-top:-10px;
@@ -339,7 +351,7 @@ label,.result_label{
     color:#1F1F13;
     width:920px;
     margin-left:auto;
-    margin-right:auto
+    margin-right:auto;
 }
 #notice a{
     color:#1F1F13
@@ -357,12 +369,12 @@ label,.result_label{
     bottom:0 !important;
     margin-left:-8px !important
 }
- 
+
 .row{
     padding:10px;
 }
 
-html, 
+html,
 body {
     height: 100%;
 }
@@ -374,12 +386,12 @@ body {
     /* padding-top: 20px; */
 }
 #footer{
-    position: fixed;
     bottom: 0;
     width: 100%;
+    height: 10%;
+    position: absolute;
     text-align: center;
     padding-bottom: 10px;
-    height: 10%;
 }
 
 .text_input{
