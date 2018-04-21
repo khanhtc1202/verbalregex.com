@@ -1,4 +1,9 @@
 import * as React from "react";
+import Dialog from 'material-ui/Dialog';
+import getMuiTheme from 'material-ui/styles/getMuiTheme';
+import darkBaseTheme from 'material-ui/styles/baseThemes/darkBaseTheme';
+import FlatButton from 'material-ui/FlatButton';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
 type Props = {
     regexString: string;
@@ -9,13 +14,14 @@ type Props = {
 
 type State = {
     verbalRegex: string;
+    raiseModal: boolean;
 }
 
 export default class RegexParser extends React.Component<Props, State> {
 
     constructor(props: Props) {
         super(props);
-        this.state = {verbalRegex: ''};
+        this.state = {verbalRegex: '', raiseModal: false};
     }
 
     onChange(e: any): void {
@@ -29,6 +35,134 @@ export default class RegexParser extends React.Component<Props, State> {
     onClear(): void {
         this.setState({verbalRegex: ''});
         this.props.clear();
+    }
+
+    handleOpen(): void {
+        this.setState({raiseModal: true});
+    }
+
+    handleClose(): void {
+        this.setState({raiseModal: false});
+    }
+
+    modalComponent(): React.ReactNode {
+        const actions = [
+            <FlatButton
+                label="Done"
+                primary={true}
+                onClick={this.handleClose.bind(this)}
+            />
+        ];
+
+        return (
+            <MuiThemeProvider muiTheme={getMuiTheme(darkBaseTheme)}>
+                <Dialog
+                    title="API"
+                    actions={actions}
+                    modal={false}
+                    open={this.state.raiseModal}
+                    onRequestClose={this.handleClose.bind(this)}
+                    autoScrollBodyContent={true}
+                >
+                    <div >
+                        <code>VerEx()</code>
+                        <table>
+                            <tbody>
+                            <tr>
+                                <td><code>.anything()</code></td>
+                                <td>
+                                    Matches everything
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><code>.anythingBut(value)</code></td>
+                                <td>Matches everything excepting letter in given value</td>
+                            </tr>
+                            <tr>
+                                <td><code>.endOfLine()</code></td>
+                                <td>append "$" at end of expression</td>
+                            </tr>
+                            <tr>
+                                <td><code>
+                                    .find(value)</code></td>
+                                <td>Find exactly the given value</td>
+                            </tr>
+                            <tr>
+                                <td><code>.maybe(value)</code></td>
+                                <td>0 or 1 times</td>
+                            </tr>
+                            <tr>
+                                <td><code>.startOfLine()</code></td>
+                                <td>Append "^" at start of expression</td>
+                            </tr>
+                            <tr>
+                                <td><code>.then(value)</code></td>
+                                <td>Shorthand for <code>find</code></td>
+                            </tr>
+                            <tr>
+                                <td><code>.withAnyCase()</code></td>
+                                <td>
+                                    Ignore case insensitive (append modifier "i")
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><code>.stopAtFirst()</code></td>
+                                <td>Stop at first match (remove modifier "g")</td>
+                            </tr>
+                            <tr>
+                                <td><code>.searchOneLine()</code></td>
+                                <td>Only search in one line (remove modifier "m")</td>
+                            </tr>
+                            <tr>
+                                <td><code>
+                                    .add(expression)</code></td>
+                            </tr>
+                            <tr>
+                                <td><code>.multiple(value)</code></td>
+                            </tr>
+                            <tr>
+                                <td><code>.or()</code></td>
+                            </tr>
+                            <tr>
+                                <td><code>.anyOf(value)</code></td>
+                                <td>
+                                    Matches any char in value
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><code>.any(value)</code></td>
+                                <td>Shorthand for <code>anyOf</code></td>
+                            </tr>
+                            <tr>
+                                <td><code>.linebreak()</code></td>
+                                <td>Matches any linebreak</td>
+                            </tr>
+                            <tr>
+                                <td><code>
+                                    .br()</code></td>
+                                <td>Shorthand for <code>linebreak()</code></td>
+                            </tr>
+                            <tr>
+                                <td><code>.range(from, to)</code></td>
+                                <td>Add expression to match a range (or multiply ranges)</td>
+                            </tr>
+                            <tr>
+                                <td><code>.tab()</code></td>
+                                <td>match tab char</td>
+                            </tr>
+                            <tr>
+                                <td><code>.word()</code></td>
+                                <td>Matches at least one word</td>
+                            </tr>
+
+                            </tbody>
+                        </table>
+                    </div>
+                    <strong>See more <a href={"https://github.com/VerbalExpressions/JSVerbalExpressions"}>here</a></strong>
+
+                </Dialog>
+            </MuiThemeProvider>
+        );
     }
 
     render(): React.ReactNode {
@@ -50,18 +184,17 @@ export default class RegexParser extends React.Component<Props, State> {
                         <div className="row input_text">
                             <div id="test_string" className="col-sm-6">
                                 <textarea className="text_input" value={this.state.verbalRegex} onChange={this.onChange.bind(this)}/>
+                                <span className="test_settings">
+                                    <label  onClick={this.handleOpen.bind(this)} className="help_button">Help</label>
+                                </span>
                             </div>
 
                             <div id="result" className="col-sm-6">
                                 <textarea id="match_string" className="text_input" />
+                                <span className="test_settings">
+                                    <label>Show invisibles <input id="show_invisibles" name="show_invisibles" type="checkbox" value="1" /></label>
+                                </span>
                             </div>
-                        </div>
-
-                        <div id="row test_controls">
-                            <span id="test_settings">
-                              <label>Wrap words <input id="word_wrap" name="word_wrap" type="checkbox" value="1" /></label>
-                              <label>Show invisibles <input id="show_invisibles" name="show_invisibles" type="checkbox" value="1" /></label>
-                            </span>
                         </div>
 
                     </div>
@@ -78,10 +211,11 @@ export default class RegexParser extends React.Component<Props, State> {
                 </div>
 
                 <div className="form_controls">
-                    <input type="button" value="parse" onClick={this.onClick.bind(this)} />
-                    <input type="button" value="clear fields" onClick={this.onClear.bind(this)} />
+                    <input type="button" value="Compile" onClick={this.onClick.bind(this)} />
+                    <input type="button" value="Clear" onClick={this.onClear.bind(this)} />
+                    {/*<input type="button" value="raise dialog" onClick={this.handleOpen.bind(this)} />*/}
                 </div>
-
+                {this.modalComponent()}
             </div>
         );
     }
