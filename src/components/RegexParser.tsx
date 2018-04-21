@@ -158,7 +158,7 @@ export default class RegexParser extends React.Component<Props, State> {
                             </tbody>
                         </table>
                     </div>
-                    <strong>See more <a href={"https://github.com/VerbalExpressions/JSVerbalExpressions"}>here</a></strong>
+                    <strong>See more <a href={"https://github.com/VerbalExpressions/JSVerbalExpressions/wiki"}>here</a></strong>
 
                 </Dialog>
             </MuiThemeProvider>
@@ -170,7 +170,6 @@ export default class RegexParser extends React.Component<Props, State> {
         const flagString = this.props.flagString;
         return (
             <div id="inner" className="gainlayout">
-
                 <div id="form_wrapper">
                     <div id="test_and_result">
                         <div className="row input_title">
@@ -184,15 +183,12 @@ export default class RegexParser extends React.Component<Props, State> {
                         <div className="row input_text">
                             <div id="test_string" className="col-sm-6">
                                 <textarea className="text_input" value={this.state.verbalRegex} onChange={this.onChange.bind(this)}/>
-                                <span className="test_settings">
-                                    <label  onClick={this.handleOpen.bind(this)} className="help_button">Help</label>
-                                </span>
                             </div>
 
                             <div id="result" className="col-sm-6">
                                 <textarea id="match_string" className="text_input" />
                                 <span className="test_settings">
-                                    <label>Show invisibles <input id="show_invisibles" name="show_invisibles" type="checkbox" value="1" /></label>
+                                    <label  onClick={this.handleOpen.bind(this)} className="help_button">Help</label>
                                 </span>
                             </div>
                         </div>
@@ -213,7 +209,6 @@ export default class RegexParser extends React.Component<Props, State> {
                 <div className="form_controls">
                     <input type="button" value="Compile" onClick={this.onClick.bind(this)} />
                     <input type="button" value="Clear" onClick={this.onClear.bind(this)} />
-                    {/*<input type="button" value="raise dialog" onClick={this.handleOpen.bind(this)} />*/}
                 </div>
                 {this.modalComponent()}
             </div>
