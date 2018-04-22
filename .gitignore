@@ -1,6 +1,2 @@
-!dist/index.html
-dist/app.js
-dist/app.js.map
-node_modules/
-.DS_Store
 .idea/
+com.iml
