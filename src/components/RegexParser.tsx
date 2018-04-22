@@ -14,6 +14,7 @@ type Props = {
 
 type State = {
     verbalRegex: string;
+    matchString: string;
     raiseModal: boolean;
 }
 
@@ -21,11 +22,15 @@ export default class RegexParser extends React.Component<Props, State> {
 
     constructor(props: Props) {
         super(props);
-        this.state = {verbalRegex: '', raiseModal: false};
+        this.state = {verbalRegex: '', matchString:'', raiseModal: false};
     }
 
-    onChange(e: any): void {
+    onChangeVerbalRegex(e: any): void {
         this.setState({verbalRegex: e.target.value});
+    }
+
+    onChangeMatchString(e: any): void {
+        this.setState({matchString: e.target.value});
     }
 
     onClick(): void {
@@ -33,7 +38,7 @@ export default class RegexParser extends React.Component<Props, State> {
     }
 
     onClear(): void {
-        this.setState({verbalRegex: ''});
+        this.setState({verbalRegex: '', matchString:''});
         this.props.clear();
     }
 
@@ -182,11 +187,11 @@ export default class RegexParser extends React.Component<Props, State> {
                         </div>
                         <div className="row input_text">
                             <div id="test_string" className="col-sm-6">
-                                <textarea className="text_input input_box" value={this.state.verbalRegex} onChange={this.onChange.bind(this)}/>
+                                <textarea className="text_input input_box" value={this.state.verbalRegex} onChange={this.onChangeVerbalRegex.bind(this)}/>
                             </div>
 
                             <div id="result" className="col-sm-6">
-                                <textarea id="match_string" ref="match_string" className="text_input" />
+                                <textarea id="match_string" ref="match_string" value={this.state.matchString} className="text_input" onChange={this.onChangeMatchString.bind(this)}/>
                             </div>
                         </div>
                         <div className="row input_text">
