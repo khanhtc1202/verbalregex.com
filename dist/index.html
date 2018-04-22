@@ -7,9 +7,16 @@
     <title>Verbal Regex: An easier way to make your regex</title>
     <link href="https://cdn.jsdelivr.net/npm/highlight-within-textarea@2.0.5/jquery.highlight-within-textarea.css"  media="screen" rel="stylesheet" type="text/css">
     <script type="text/javascript" async="" src="./public/ga.js"></script>
-    <link href="./public/codemirror.css" rel="stylesheet" type="text/css">
     <link href="./public/bootstrap.css" rel="stylesheet" type="text/css">
     <link href="./public/index.css" media="screen" rel="stylesheet" type="text/css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.33.0/codemirror.css">
+    <link rel="stylesheet" href="https://codemirror.net/addon/hint/show-hint.css">
+    <link rel="stylesheet" href="https://codemirror.net/theme/solarized.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.33.0/codemirror.js"></script>
+    <script src="https://codemirror.net/mode/javascript/javascript.js"></script>
+    <script src="https://codemirror.net/addon/hint/show-hint.js"></script>
+    <script src="https://codemirror.net/addon/selection/active-line.js"></script>
 
 </head>
 
@@ -35,7 +42,7 @@
                 </div>
                 <div class="row input_text">
                     <div id="test_string" class="col-sm-6">
-                        <textarea id="verbal_regex" class="text_input input_box" ></textarea>
+                        <textarea id="verbal_regex" class="text_input input_box">VerEx()</textarea>
                     </div>
 
                     <div class="col-sm-6">
@@ -76,17 +83,113 @@
         <p>Powered by <a href="https://github.com/VerbalExpressions">VerbalExpression</a>.</p>
     </div>
 </div>
-
-
 </body>
-<!--<script src="./public/codemirror.js"></script>-->
-<!--<script>-->
-<!--var editor = CodeMirror.fromTextArea(document.getElementById("code"), {-->
-<!--value: "function myScript(){return 100;}\n",-->
-<!--mode:  "javascript",-->
-<!--lineNumbers: true-->
-<!--});-->
-<!--</script>-->
+
+<script>
+    (function() {
+        const codemirror = CodeMirror.fromTextArea(document.getElementById("verbal_regex"), {
+            lineNumbers: true,
+            styleActiveLine: true,
+            theme: 'dark'
+        });
+
+        codemirror.on('change', function () {
+            console.log(codemirror.getValue());
+            codemirror.save();
+        });
+
+        // keymap を指定
+        codemirror.setOption('extraKeys', {
+            'Cmd-E': function() {
+                snippet()
+            },
+            'Ctrl-E': function() {
+                snippet()
+            }
+        });
+        // スニペットの配列
+        const snippets = [{
+            text: '.anything()\n',
+            displayText: '.anything()   Matches everything'
+        }, {
+            text: '.anythingBut(value)',
+            displayText: '.anythingBut(value)   Matches everything excepting letter in given value'
+        }, {
+            text: '.endOfLine()\n',
+            displayText: '.endOfLine()  Append "$" at end of expression'
+        }, {
+            text: '.find(value)',
+            displayText: '.find(value)  Find exactly the given value'
+        }, {
+            text: '.maybe(value)',
+            displayText: '.maybe(value) 0 or 1 times'
+        }, {
+            text: '.startOfLine()\n',
+            displayText: '.startOfLine()    Append "^" at start of expression'
+        }, {
+            text: '.then(value)',
+            displayText: '.then(value)  Shorthand for find'
+        }, {
+            text: '.withAnyCase()\n',
+            displayText: '.withAnyCase()    Ignore case insensitive (append modifier "i")'
+        }, {
+            text: '.stopAtFirst()\n',
+            displayText: '.stopAtFirst()    Stop at first match (remove modifier "g")'
+        }, {
+            text: '.searchOneLine()\n',
+            displayText: '.searchOneLine()  Only search in one line (remove modifier "m")'
+        }, {
+            text: '.add(expression)'
+        }, {
+            text: '.multiple(value)'
+        }, {
+            text: '.or()\n'
+        }, {
+            text: '.anyOf(value)',
+            displayText: '.anyOf(value) Matches any char in value'
+        }, {
+            text: '.any(value)',
+            displayText: '.any(value)   Shorthand for anyOf'
+        }, {
+            text: '.linebreak()\n',
+            displayText: '.linebreak()  Matches any linebreak'
+        }, {
+            text: '.br()\n',
+            displayText: '.br() Shorthand for linebreak()'
+        }, {
+            text: '.range(from, to)',
+            displayText: '.range(from, to)  Add expression to match a range (or multiply ranges)'
+        }, {
+            text: '.tab()\n',
+            displayText: '.tab()    Match tab char'
+        }, {
+            text: '.word()\n',
+            displayText: '.word()   Matches at least one word'
+        }];
+        function snippet() {
+            CodeMirror.showHint(codemirror, function() {
+                const cursor = codemirror.getCursor();
+                const token = codemirror.getTokenAt(cursor);
+                const start = token.start;
+                const end = cursor.ch;
+                const line = cursor.line;
+                const currentWord = token.string;
+                // 入力した文字列をスニペット配列から探す
+                const list = snippets.filter(function(item) {
+                    return item.text.indexOf(currentWord) >= 0
+                });
+                return {
+                    list: list.length ? list : snippets,
+                    from: CodeMirror.Pos(line, start),
+                    to: CodeMirror.Pos(line, end)
+                }
+            }, {
+                completeSingle: false
+            })
+        }
+    })()
+</script>
+
 <script
     src="http://code.jquery.com/jquery-3.3.1.js"
     integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
