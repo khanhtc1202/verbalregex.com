@@ -42,7 +42,7 @@ $('#match_string').highlightWithinTextarea({
 });
 
 $('#clear').click(function(){
-    $("#verbal_regex").val('');
+    $("#verbal_regex").val('VerEx()');
 
     $("#regex").val('');
     $("#flag").val('');
