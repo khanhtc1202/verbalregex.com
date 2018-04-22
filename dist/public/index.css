@@ -69,8 +69,8 @@ h3{
     white-space:pre
 }
 #match_string,#match_captures,input[type="text"],textarea,.slash{
-    font-size:12px;
-    font-family:monaco, courier
+    /*font-size:12px;*/
+    /*font-family:monaco, courier*/
 }
 #match_captures table{
     border-collapse:collapse;
@@ -106,13 +106,13 @@ h3{
     background-color:#F2F179;
     color:#000
 }
-#match_string,#match_captures{
-    border:1px solid #DDDDDD;
-    padding:15px;
-    background-color:#000000;
-    color:#ffffff;
-    margin-bottom:10px
-}
+/*#match_string,#match_captures{*/
+    /*border:1px solid #DDDDDD;*/
+    /*padding:15px;*/
+    /*background-color:#000000;*/
+    /*color:#ffffff;*/
+    /*margin-bottom:10px*/
+/*}*/
 #match_string,#match_captures{
     margin-top:1px
 }
@@ -145,7 +145,10 @@ code{
 #form_wrapper input[type="text"]{
     font-size:16px
 }
-#form_wrapper input[type="text"],#form_wrapper textarea{
+/*#form_wrapper input[type="text"],#form_wrapper textarea*/
+
+.input_box
+{
     background-color:#000000;
     color:#ffffff;
     padding:10px;
@@ -431,4 +434,46 @@ body {
 
 table{
     width: 100%;
+}
+
+.hwt-container{
+    width:100%;
+    height:100%;
+    color: white;
+    background-color: black;
+    border: 1px solid #DDDDDD;
+}
+
+#match_string{
+    color: white !important;
+}
+
+.pick-color{
+    background-color: darkkhaki;
+}
+
+/*textarea::-webkit-scrollbar {*/
+    /*width: 1em;*/
+/*}*/
+
+:host {
+    display: inline-block;
+    position: relative;
+    width: 400px;
+    border: 1px solid;
+    padding: 2px;
+    -moz-appearance: textarea;
+    -webkit-appearance: textarea;
+}
+
+::-webkit-scrollbar {
+    width: 6px!important
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: rgba(133, 133, 9, 0.75)
+}
+
+::-webkit-scrollbar-track {
+    background: rgba(255,255,255,.08)
 }

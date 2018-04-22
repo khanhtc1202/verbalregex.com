@@ -16,6 +16,7 @@ export const parse = (verbalRegex: string): any => {
             else{
                 regexPart = regexString.substr(1,regexString.length - 1);
             }
+
             dispatch(throwRegexString(regexPart, flagPart));
         } catch (e) {
             dispatch(throwRegexString('',''));

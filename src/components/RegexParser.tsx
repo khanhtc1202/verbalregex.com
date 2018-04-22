@@ -177,16 +177,20 @@ export default class RegexParser extends React.Component<Props, State> {
                                 <label>Editor:</label>
                             </div>
                             <div className="col-sm-6">
-                                <label>Input string:</label>
+                                <label >Input string:</label>
                             </div>
                         </div>
                         <div className="row input_text">
                             <div id="test_string" className="col-sm-6">
-                                <textarea className="text_input" value={this.state.verbalRegex} onChange={this.onChange.bind(this)}/>
+                                <textarea className="text_input input_box" value={this.state.verbalRegex} onChange={this.onChange.bind(this)}/>
                             </div>
 
                             <div id="result" className="col-sm-6">
-                                <textarea id="match_string" className="text_input" />
+                                <textarea id="match_string" ref="match_string" className="text_input" />
+                            </div>
+                        </div>
+                        <div className="row input_text">
+                            <div id="result" className="col-sm-12">
                                 <span className="test_settings">
                                     <label  onClick={this.handleOpen.bind(this)} className="help_button">Help</label>
                                 </span>
@@ -199,9 +203,9 @@ export default class RegexParser extends React.Component<Props, State> {
                     </div>
                     <div className="row regex_below flex-container">
                         <span className="slash">/</span>
-                        <input id="regex" name="regex" tabIndex={1} type="text" value={regexString} />
+                        <input id="regex" className={"input_box"} name="regex" tabIndex={1} type="text" value={regexString} />
                         <span className="slash">/</span>
-                        <input id="flag" name="flag" tabIndex={2} type="text" value={flagString} /><br/>
+                        <input id="flag" className={"input_box"} name="flag" tabIndex={2} type="text" value={flagString} /><br/>
                     </div>
 
                 </div>
