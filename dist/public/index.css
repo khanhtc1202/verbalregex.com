@@ -488,3 +488,8 @@ textarea{
 ::-webkit-scrollbar-track {
     background: rgba(255,255,255,.08)
 }
+
+.cm-s-dark{
+    height: 100% !important;
+    width: 100% !important;
+}
