@@ -72,40 +72,7 @@ h3{
     /*font-size:12px;*/
     /*font-family:monaco, courier*/
 }
-#match_captures table{
-    border-collapse:collapse;
-    margin:5px
-}
-#match_captures table th{
-    font-family:futura, helvetica, arial;
-    font-variant:small-caps;
-    color:#84bde7;
-    font-size:12px;
-    padding-top:10px;
-    font-weight:normal
-}
-#match_captures table th:first-child{
-    padding-top:5px
-}
-#match_captures table tbody tr:first-child td{
-    padding-top:10px
-}
-#match_captures table tbody tr:nth-last-child(1) td{
-    padding-bottom:10px
-}
-#match_captures table tr td:nth-child(1){
-    padding-top:4px
-}
-#match_captures table tr td:nth-child(2){
-    padding-left:8px;
-    padding-top:4px
-}
-#match_captures td.named_group span{
-    font-size:12px;
-    padding:1px 2px 1px 2px;
-    background-color:#F2F179;
-    color:#000
-}
+
 /*#match_string,#match_captures{*/
     /*border:1px solid #DDDDDD;*/
     /*padding:15px;*/
@@ -492,4 +459,55 @@ textarea{
 .cm-s-dark{
     height: 100% !important;
     width: 100% !important;
+}
+
+tr{
+    text-align: left;
+}
+
+.modal-body{
+    text-align: left;
+}
+
+#myModal{
+    font-size: 13px;
+    font-family: futura, helvetica, arial;
+}
+
+.help-row{
+    padding:0px;
+    padding-right: 10px;
+}
+
+ul{
+    padding-left: 15px;
+}
+
+li p{
+    margin-bottom: 0px;
+}
+
+li > p > a{
+    color: #cecc17;
+}
+
+.modal-content{
+    background-color: #232323;
+    color:white;
+}
+
+.modal-footer > button{
+    background: darkgray;
+}
+
+code{
+    color: #e89c3e;
+}
+
+.modal-header{
+    color: #cecc17;
+}
+
+.hwt-container{
+    font-family: monospace;
 }
