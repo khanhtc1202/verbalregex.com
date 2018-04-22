@@ -53,7 +53,7 @@ h3{
 }
 #main{
     width:90%;
-    height: 80%;
+    height: 70%;
     margin-left:auto;
     margin-right:auto;
     text-align:center;
@@ -163,6 +163,7 @@ code{
     height: 80%;
     text-align:left;
     padding: 20px;
+    padding-top:0px;
 }
 /* #test_string{
     float:left;
@@ -395,6 +396,10 @@ body {
     position: absolute;
     text-align: center;
     padding-bottom: 10px;
+
+    display: flex;
+    flex-direction: column;
+    flex-flow: column-reverse;
 }
 
 .text_input{
@@ -436,7 +441,7 @@ table{
     width: 100%;
 }
 
-.hwt-container{
+#match_string{
     width:100%;
     height:100%;
     color: white;
@@ -455,6 +460,10 @@ table{
 /*textarea::-webkit-scrollbar {*/
     /*width: 1em;*/
 /*}*/
+
+textarea{
+    resize: none;
+}
 
 :host {
     display: inline-block;

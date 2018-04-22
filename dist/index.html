@@ -1,0 +1,119 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <title>Verbal Regex: An easier way to make your regex</title>
+    <link href="https://cdn.jsdelivr.net/npm/highlight-within-textarea@2.0.5/jquery.highlight-within-textarea.css"  media="screen" rel="stylesheet" type="text/css">
+    <script type="text/javascript" async="" src="./public/ga.js"></script>
+    <link href="./public/codemirror.css" rel="stylesheet" type="text/css">
+    <link href="./public/bootstrap.css" rel="stylesheet" type="text/css">
+    <link href="./public/index.css" media="screen" rel="stylesheet" type="text/css">
+
+</head>
+
+<body >
+
+<div id="header">
+    <h1><a href="https://verbalregex.com/">Verbal Regex</a></h1>
+    <h2>Regular Expressions made easy</h2>
+</div>
+
+<div id="main">
+
+    <div id="inner" class="gainlayout">
+        <div id="form_wrapper">
+            <div id="test_and_result">
+                <div class="row input_title">
+                    <div class="col-sm-6">
+                        <label>Editor:</label>
+                    </div>
+                    <div class="col-sm-6">
+                        <label >Input string:</label>
+                    </div>
+                </div>
+                <div class="row input_text">
+                    <div id="test_string" class="col-sm-6">
+                        <textarea class="text_input input_box" ></textarea>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <textarea id="match_string"></textarea>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <span class="test_settings">
+                            <label  class="help_button">Help</label>
+                        </span>
+                    </div>
+                </div>
+
+            </div>
+            <div class="row input_title regex_below">
+                <label id="regex_label" htmlFor="regex">Regular expression:</label>
+            </div>
+            <div class="row regex_below flex-container">
+                <span class="slash">/</span>
+                <input id="regex" class="input_box" name="regex" tabIndex={1} type="text" />
+                <span class="slash">/</span>
+                <input id="flag" class="input_box" name="flag" tabIndex={2} type="text" /><br/>
+            </div>
+
+        </div>
+
+        <div class="form_controls">
+            <input type="button" value="Compile" />
+            <input type="button" value="Clear"  />
+        </div>
+    </div>
+
+</div>
+
+<div id="footer">
+    <div class="birdseed">
+        <p>Powered by <a href="https://github.com/VerbalExpressions">VerbalExpression</a>.</p>
+    </div>
+</div>
+
+
+</body>
+<!--<script src="./public/codemirror.js"></script>-->
+<!--<script>-->
+<!--var editor = CodeMirror.fromTextArea(document.getElementById("code"), {-->
+<!--value: "function myScript(){return 100;}\n",-->
+<!--mode:  "javascript",-->
+<!--lineNumbers: true-->
+<!--});-->
+<!--</script>-->
+<script
+    src="http://code.jquery.com/jquery-3.3.1.js"
+    integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+    crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/highlight-within-textarea@2.0.5/jquery.highlight-within-textarea.js"></script>
+<script>
+
+
+    // var re = new RegExp(reg,flag);
+
+
+    // $("#regex")[0].addEventListener("change",function(){
+    //     $('#match_string').highlightWithinTextarea('destroy');
+    //     var reg = $('#regex').value();
+    //     var flag = $('#flag').value();
+    //
+    //     console.log('here');
+    //     var re = new RegExp(reg,flag);
+    //     $('#match_string').highlightWithinTextarea({
+    //         highlight: re,
+    //         className: 'pick-color'
+    //     });
+    //     $('#match_string').highlightWithinTextarea('update');
+    //
+    // });
+
+
+
+</script>
+</html>
