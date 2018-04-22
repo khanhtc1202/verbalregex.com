@@ -459,6 +459,7 @@ textarea{
 .cm-s-dracula{
     height: 100% !important;
     width: 100% !important;
+    border:1px solid #DDDDDD !important;
 }
 
 tr{

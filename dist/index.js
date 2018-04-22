@@ -27,7 +27,6 @@ $("#compile").click(function(){
         });
     }
     catch(e){
-        console.log("Error: " + e);
         alert("Error on converting verbal string to Regex");
     }
 })
@@ -42,7 +41,7 @@ $('#match_string').highlightWithinTextarea({
 });
 
 $('#clear').click(function(){
-    $("#verbal_regex").val('VerEx()');
+    // $("#verbal_regex").val('VerEx()');
 
     $("#regex").val('');
     $("#flag").val('');

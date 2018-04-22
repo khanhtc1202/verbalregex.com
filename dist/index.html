@@ -42,7 +42,9 @@
                 </div>
                 <div class="row input_text">
                     <div id="test_string" class="col-sm-6">
-                        <textarea id="verbal_regex" class="text_input input_box">VerEx()</textarea>
+                        <textarea id="verbal_regex" class="text_input input_box">
+VerEx()
+</textarea>
                     </div>
 
                     <div class="col-sm-6">
@@ -219,6 +221,7 @@
         });
 
         // keymap を指定
+        codemirror.setCursor({line: 2, ch: 1});
         codemirror.setOption('extraKeys', {
             'Cmd-E': function() {
                 snippet()
