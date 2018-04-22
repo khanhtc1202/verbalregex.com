@@ -512,3 +512,7 @@ code{
 .hwt-container{
     font-family: monospace;
 }
+
+.birdseed p{
+    margin-bottom: 0px;
+}
