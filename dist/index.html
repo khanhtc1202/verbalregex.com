@@ -12,7 +12,7 @@
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.33.0/codemirror.css">
     <link rel="stylesheet" href="https://codemirror.net/addon/hint/show-hint.css">
-    <link rel="stylesheet" href="https://codemirror.net/theme/solarized.css">
+    <link rel="stylesheet" href="./public/dracula.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.33.0/codemirror.js"></script>
     <script src="https://codemirror.net/mode/javascript/javascript.js"></script>
     <script src="https://codemirror.net/addon/hint/show-hint.js"></script>
@@ -90,7 +90,7 @@
         const codemirror = CodeMirror.fromTextArea(document.getElementById("verbal_regex"), {
             lineNumbers: true,
             styleActiveLine: true,
-            theme: 'dark'
+            theme: 'dracula'
         });
 
         codemirror.on('change', function () {
@@ -112,22 +112,22 @@
             text: '.anything()\n',
             displayText: '.anything()   Matches everything'
         }, {
-            text: '.anythingBut(value)',
+            text: '.anythingBut(\'\')',
             displayText: '.anythingBut(value)   Matches everything excepting letter in given value'
         }, {
             text: '.endOfLine()\n',
             displayText: '.endOfLine()  Append "$" at end of expression'
         }, {
-            text: '.find(value)',
+            text: '.find(\'\')',
             displayText: '.find(value)  Find exactly the given value'
         }, {
-            text: '.maybe(value)',
+            text: '.maybe(\'\')',
             displayText: '.maybe(value) 0 or 1 times'
         }, {
             text: '.startOfLine()\n',
             displayText: '.startOfLine()    Append "^" at start of expression'
         }, {
-            text: '.then(value)',
+            text: '.then(\'\')',
             displayText: '.then(value)  Shorthand for find'
         }, {
             text: '.withAnyCase()\n',
@@ -139,16 +139,16 @@
             text: '.searchOneLine()\n',
             displayText: '.searchOneLine()  Only search in one line (remove modifier "m")'
         }, {
-            text: '.add(expression)'
+            text: '.add(\'\')'
         }, {
-            text: '.multiple(value)'
+            text: '.multiple(\'\')'
         }, {
             text: '.or()\n'
         }, {
-            text: '.anyOf(value)',
+            text: '.anyOf(\'\')',
             displayText: '.anyOf(value) Matches any char in value'
         }, {
-            text: '.any(value)',
+            text: '.any(\'\')',
             displayText: '.any(value)   Shorthand for anyOf'
         }, {
             text: '.linebreak()\n',
