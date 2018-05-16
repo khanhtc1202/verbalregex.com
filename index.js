@@ -125,7 +125,7 @@ const snippets = [{
     text: '.searchOneLine()\n',
     displayText: '.searchOneLine()      Only search in one line (remove modifier "m")'
 }, {
-    text: '.range(from, to)\n',
+    text: '.range(\'\', \'\')\n',
     displayText: '.range(from, to)      Add expression to match a range (or multiply ranges)'
 }, {
     text: '.add(\'\')\n'
