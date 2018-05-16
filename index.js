@@ -76,57 +76,57 @@ codemirror.setOption('extraKeys', {
     }
 });
 // スニペットの配列
-var snippets = [{
+const snippets = [{
     text: '.find(\'\')\n',
-    displayText: '.find(value)  Find exactly the given value'
+    displayText: '.find(value)          Find exactly the given value'
 }, {
     text: '.maybe(\'\')\n',
-    displayText: '.maybe(value) 0 or 1 times'
-}, {
-    text: '.endOfLine()\n',
-    displayText: '.endOfLine()  Append "$" at end of expression'
-}, {
-    text: '.startOfLine()\n',
-    displayText: '.startOfLine()    Append "^" at start of expression'
+    displayText: '.maybe(value)         0 or 1 times'
 }, {
     text: '.then(\'\')\n',
-    displayText: '.then(value)  Shorthand for find'
-}, {
-    text: '.withAnyCase()\n',
-    displayText: '.withAnyCase()    Ignore case insensitive (append modifier "i")'
-}, {
-    text: '.stopAtFirst()\n',
-    displayText: '.stopAtFirst()    Stop at first match (remove modifier "g")'
-}, {
-    text: '.searchOneLine()\n',
-    displayText: '.searchOneLine()  Only search in one line (remove modifier "m")'
+    displayText: '.then(value)          Shorthand for find'
 }, {
     text: '.anyOf(\'\')\n',
-    displayText: '.anyOf(value) Matches any char in value'
+    displayText: '.anyOf(value)         Matches any char in value'
 }, {
     text: '.any(\'\')\n',
-    displayText: '.any(value)   Shorthand for anyOf'
+    displayText: '.any(value)           Shorthand for anyOf'
 }, {
     text: '.linebreak()\n',
-    displayText: '.linebreak()  Matches any linebreak'
+    displayText: '.linebreak()          Matches any linebreak'
 }, {
     text: '.br()\n',
-    displayText: '.br() Shorthand for linebreak()'
-}, {
-    text: '.range(from, to)\n',
-    displayText: '.range(from, to)  Add expression to match a range (or multiply ranges)'
+    displayText: '.br()                 Shorthand for linebreak()'
 }, {
     text: '.tab()\n',
-    displayText: '.tab()    Match tab char'
+    displayText: '.tab()                Match tab char'
 }, {
     text: '.word()\n',
-    displayText: '.word()   Matches at least one word'
+    displayText: '.word()               Matches at least one word'
+}, {
+    text: '.endOfLine()\n',
+    displayText: '.endOfLine()          Append "$" at end of expression'
+}, {
+    text: '.startOfLine()\n',
+    displayText: '.startOfLine()        Append "^" at start of expression'
 }, {
     text: '.anything()\n',
-    displayText: '.anything()   Matches everything'
+    displayText: '.anything()           Matches everything'
 }, {
     text: '.anythingBut(\'\')\n',
     displayText: '.anythingBut(value)   Matches everything excepting letter in given value'
+}, {
+    text: '.withAnyCase()\n',
+    displayText: '.withAnyCase()        Ignore case insensitive (append modifier "i")'
+}, {
+    text: '.stopAtFirst()\n',
+    displayText: '.stopAtFirst()        Stop at first match (remove modifier "g")'
+}, {
+    text: '.searchOneLine()\n',
+    displayText: '.searchOneLine()      Only search in one line (remove modifier "m")'
+}, {
+    text: '.range(from, to)\n',
+    displayText: '.range(from, to)      Add expression to match a range (or multiply ranges)'
 }, {
     text: '.add(\'\')\n'
 }, {
