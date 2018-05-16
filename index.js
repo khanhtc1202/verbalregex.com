@@ -149,7 +149,7 @@ function snippet() {
         });
         return {
             list: list.length ? list : snippets,
-            from: CodeMirror.Pos(line, start+1),
+            from: CodeMirror.Pos(line, start),
             to: CodeMirror.Pos(line, end)
         }
     }, {
