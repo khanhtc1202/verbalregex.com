@@ -30,15 +30,6 @@ $("#compile").click(function(){
                 editor.markText(start,end, {className: "cm-matchhighlight"});
             }
         }
-        
-        // const mark = {line: 1,ch: 0};
-        
-        // $('#match_string').highlightWithinTextarea({
-        //     highlight: re,
-        //     className: 'pick-color'
-        // });
-        
-        // editor.markText({line: 2, ch: 2}, {line: 3, ch: 2}, {className: "cm-matchhighlight"});
     }
     catch(e){
         console.log(e);
@@ -46,23 +37,11 @@ $("#compile").click(function(){
     }
 })
 
-// $("#regex").onchange(function(){
-//
-// })
-
-// $('#match_string').highlightWithinTextarea({
-//     highlight: '',
-//     className: 'pick-color'
-// });
-
 $('#clear').click(function(){
-    // $("#verbal_regex").val('VerEx()');
-
     $("#regex").val('');
     $("#flag").val('');
 
     $("#match_string").val('');
-    // $('#match_string').highlightWithinTextarea('update');
 })
 
 
