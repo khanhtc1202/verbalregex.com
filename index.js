@@ -20,37 +20,36 @@ $("#compile").click(function(){
 
         var re = new RegExp(regexPart,flagPart);
 
-
-        $('#match_string').highlightWithinTextarea({
-            highlight: re,
-            className: 'pick-color'
-        });
+        const lines = $($('.CodeMirror-code')[1]).children();
+        console.log(lines);
+        for (var i = 0; i < lines.length; i++) {
+            while ((result = re.exec($(lines[i]).text())) !== null) {
+                const start = {line: i,ch: result.index};
+                const end = {line: i,ch: result.index + result[0].length};
+                console.log(start, end);
+                editor.markText(start,end, {className: "cm-matchhighlight"});
+            }
+        }
     }
     catch(e){
+        console.log(e);
         alert("Error on converting verbal string to Regex");
     }
 })
 
-// $("#regex").onchange(function(){
-//
-// })
-
-$('#match_string').highlightWithinTextarea({
-    highlight: '',
-    className: 'pick-color'
-});
-
 $('#clear').click(function(){
-    // $("#verbal_regex").val('VerEx()');
-
     $("#regex").val('');
     $("#flag").val('');
 
     $("#match_string").val('');
-    $('#match_string').highlightWithinTextarea('update');
 })
 
 
+var editor = CodeMirror.fromTextArea(document.getElementById("match_string"), {
+    lineNumbers: false,
+    styleActiveLine: true,
+    theme: 'dracula'
+  });
 
 var codemirror = CodeMirror.fromTextArea(document.getElementById("verbal_regex"), {
     lineNumbers: true,

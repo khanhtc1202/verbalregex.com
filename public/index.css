@@ -420,6 +420,7 @@ table{
     color: white !important;
     height: 100%;
     width: 100%;
+    background-color: black;
 }
 
 .pick-color{
@@ -515,4 +516,12 @@ code{
 
 .birdseed p{
     margin-bottom: 0px;
+}
+.cm-s-dracula span.cm-variable {
+    color: #ffffff !important;
+}
+.cm-matchhighlight {
+    background-color: #ef3952;
+    margin-right: 2px;
+    border-radius: 2px;
 }
