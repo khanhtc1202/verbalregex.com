@@ -20,13 +20,28 @@ $("#compile").click(function(){
 
         var re = new RegExp(regexPart,flagPart);
 
-
-        $('#match_string').highlightWithinTextarea({
-            highlight: re,
-            className: 'pick-color'
-        });
+        const lines = $($('.CodeMirror-code')[1]).children();
+        console.log(lines);
+        for (var i = 0; i < lines.length; i++) {
+            while ((result = re.exec($(lines[i]).text())) !== null) {
+                const start = {line: i,ch: result.index};
+                const end = {line: i,ch: result.index + result[0].length};
+                console.log(start, end);
+                editor.markText(start,end, {className: "cm-matchhighlight"});
+            }
+        }
+        
+        // const mark = {line: 1,ch: 0};
+        
+        // $('#match_string').highlightWithinTextarea({
+        //     highlight: re,
+        //     className: 'pick-color'
+        // });
+        
+        // editor.markText({line: 2, ch: 2}, {line: 3, ch: 2}, {className: "cm-matchhighlight"});
     }
     catch(e){
+        console.log(e);
         alert("Error on converting verbal string to Regex");
     }
 })
@@ -35,10 +50,10 @@ $("#compile").click(function(){
 //
 // })
 
-$('#match_string').highlightWithinTextarea({
-    highlight: '',
-    className: 'pick-color'
-});
+// $('#match_string').highlightWithinTextarea({
+//     highlight: '',
+//     className: 'pick-color'
+// });
 
 $('#clear').click(function(){
     // $("#verbal_regex").val('VerEx()');
@@ -47,10 +62,15 @@ $('#clear').click(function(){
     $("#flag").val('');
 
     $("#match_string").val('');
-    $('#match_string').highlightWithinTextarea('update');
+    // $('#match_string').highlightWithinTextarea('update');
 })
 
 
+var editor = CodeMirror.fromTextArea(document.getElementById("match_string"), {
+    lineNumbers: false,
+    styleActiveLine: true,
+    theme: 'dracula'
+  });
 
 var codemirror = CodeMirror.fromTextArea(document.getElementById("verbal_regex"), {
     lineNumbers: true,
