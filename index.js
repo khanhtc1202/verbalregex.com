@@ -1,40 +1,5 @@
 $("#compile").click(function(){
-    verbalRegex = $("#verbal_regex").val();
-    tester = VerEx();
-
-    try {
-        eval("tester = " + verbalRegex);
-        regexString = tester.toString();
-
-        var flagPart = regexString.split("/").pop();
-        var regexPart = '';
-        if(flagPart != undefined){
-            regexPart = regexString.substr(1,regexString.length - 2 - flagPart.length);
-        }
-        else{
-            regexPart = regexString.substr(1,regexString.length - 1);
-        }
-
-        $("#regex").val(regexPart);
-        $("#flag").val(flagPart);
-
-        var re = new RegExp(regexPart,flagPart);
-
-        const lines = $($('.CodeMirror-code')[1]).children();
-        console.log(lines);
-        for (var i = 0; i < lines.length; i++) {
-            while ((result = re.exec($(lines[i]).text())) !== null) {
-                const start = {line: i,ch: result.index};
-                const end = {line: i,ch: result.index + result[0].length};
-                console.log(start, end);
-                editor.markText(start,end, {className: "cm-matchhighlight"});
-            }
-        }
-    }
-    catch(e){
-        console.log(e);
-        alert("Error on converting verbal string to Regex");
-    }
+    compile();
 })
 
 $('#clear').click(function(){
@@ -48,7 +13,8 @@ $('#clear').click(function(){
 var editor = CodeMirror.fromTextArea(document.getElementById("match_string"), {
     lineNumbers: false,
     styleActiveLine: true,
-    theme: 'dracula'
+    theme: 'dracula',
+    lineWrapping: true
   });
 
 var codemirror = CodeMirror.fromTextArea(document.getElementById("verbal_regex"), {
@@ -72,8 +38,15 @@ codemirror.setOption('extraKeys', {
     },
     'Ctrl-E': function() {
         snippet()
+    },
+    'Cmd-Enter': function() {
+        compile()
+    },
+    'Ctrl-Enter': function() {
+        compile()
     }
 });
+
 // スニペットの配列
 const snippets = [{
     text: '.find(\'\')\n',
@@ -154,4 +127,43 @@ function snippet() {
     }, {
         completeSingle: false
     })
+}
+
+function compile() {
+    verbalRegex = $("#verbal_regex").val();
+    tester = VerEx();
+
+    try {
+        eval("tester = " + verbalRegex);
+        regexString = tester.toString();
+
+        var flagPart = regexString.split("/").pop();
+        var regexPart = '';
+        if(flagPart != undefined){
+            regexPart = regexString.substr(1,regexString.length - 2 - flagPart.length);
+        }
+        else{
+            regexPart = regexString.substr(1,regexString.length - 1);
+        }
+
+        $("#regex").val(regexPart);
+        $("#flag").val(flagPart);
+
+        var re = new RegExp(regexPart,flagPart);
+
+        const lines = $($('.CodeMirror-code')[1]).children();
+        console.log(lines);
+        for (var i = 0; i < lines.length; i++) {
+            while ((result = re.exec($(lines[i]).text())) !== null) {
+                const start = {line: i,ch: result.index};
+                const end = {line: i,ch: result.index + result[0].length};
+                console.log(start, end);
+                editor.markText(start,end, {className: "cm-matchhighlight"});
+            }
+        }
+    }
+    catch(e){
+        console.log(e);
+        alert("Error on converting verbal string to Regex");
+    }
 }
