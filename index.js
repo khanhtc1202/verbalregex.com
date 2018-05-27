@@ -151,18 +151,24 @@ function compile() {
 
         var re = new RegExp(regexPart,flagPart);
 
-        const lines = $($('.CodeMirror-code')[1]).children();
-        console.log(lines);
-        for (var i = 0; i < lines.length; i++) {
-            while ((result = re.exec($(lines[i]).text())) !== null) {
-                const start = {line: i,ch: result.index};
-                const end = {line: i,ch: result.index + result[0].length};
-                console.log(start, end);
-                editor.markText(start,end, {className: "cm-matchhighlight"});
+        if(regexPart != "(?:)")
+        {
+            const lines = $($('.CodeMirror-code')[1]).children();
+
+            for (var i = 0; i < lines.length; i++) {
+                while ((result = re.exec($(lines[i]).text())) !== null) {
+                    const start = {line: i,ch: result.index};
+                    const end = {line: i,ch: result.index + result[0].length};
+                    editor.markText(start,end, {className: "cm-matchhighlight"});
+                }
             }
+        }
+        else{
+            // TODO show infinite error
         }
     }
     catch(e){
+        // TODO show error in a more beautiful way
         console.log(e);
         alert("Error on converting verbal string to Regex");
     }
