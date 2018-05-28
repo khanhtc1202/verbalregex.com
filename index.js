@@ -51,14 +51,14 @@ codemirror.setOption('extraKeys', {
     'Cmd-E': function (cm) {
         showSnippet(cm);
     },
-    'Ctrl-E': function () {
+    'Ctrl-E': function (cm) {
         showSnippet(cm);
     },
     'Cmd-Enter': function () {
-        showSnippet(cm);
+        compile();
     },
     'Ctrl-Enter': function () {
-        showSnippet(cm);
+        compile();
     }
 });
 
