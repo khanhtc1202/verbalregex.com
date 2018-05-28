@@ -126,7 +126,7 @@ function snippet() {
     CodeMirror.showHint(codemirror, function() {
         const cursor = codemirror.getCursor();
         const token = codemirror.getTokenAt(cursor);
-        const start = token.start;
+        const start = token.string===")" ? token.start+1 : token.start;
         const end = cursor.ch;
         const line = cursor.line;
         const currentWord = token.string;
@@ -136,7 +136,7 @@ function snippet() {
         });
         return {
             list: list.length ? list : snippets,
-            from: CodeMirror.Pos(line, start+1),
+            from: CodeMirror.Pos(line, start),
             to: CodeMirror.Pos(line, end)
         }
     }, {
