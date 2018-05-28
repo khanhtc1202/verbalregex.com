@@ -32,36 +32,51 @@ codemirror.setCursor({
     line: 2,
     ch: 1
 });
+
+function showSnippet(cm){
+    snippet();
+    var completion = cm.state.completionActive.data;
+    CodeMirror.on(completion, 'pick', function(completion, element) {
+        if(completion.text.indexOf("\n") == -1){
+            const cursor = codemirror.getCursor();
+            const end = cursor.ch;
+            const line = cursor.line;
+
+            codemirror.setCursor({line:line,ch:end-2});
+        }
+    });
+}
+
 codemirror.setOption('extraKeys', {
-    'Cmd-E': function() {
-        snippet()
+    'Cmd-E': function (cm) {
+        showSnippet(cm);
     },
-    'Ctrl-E': function() {
-        snippet()
+    'Ctrl-E': function (cm) {
+        showSnippet(cm);
     },
-    'Cmd-Enter': function() {
-        compile()
+    'Cmd-Enter': function () {
+        compile();
     },
-    'Ctrl-Enter': function() {
-        compile()
+    'Ctrl-Enter': function () {
+        compile();
     }
 });
 
 // スニペットの配列
 const snippets = [{
-    text: '.find(\'\')\n',
+    text: '.find(\'\')',
     displayText: '.find(value)          Find exactly the given value'
 }, {
-    text: '.maybe(\'\')\n',
+    text: '.maybe(\'\')',
     displayText: '.maybe(value)         0 or 1 times'
 }, {
-    text: '.then(\'\')\n',
+    text: '.then(\'\')',
     displayText: '.then(value)          Shorthand for find'
 }, {
-    text: '.anyOf(\'\')\n',
+    text: '.anyOf(\'\')',
     displayText: '.anyOf(value)         Matches any char in value'
 }, {
-    text: '.any(\'\')\n',
+    text: '.any(\'\')',
     displayText: '.any(value)           Shorthand for anyOf'
 }, {
     text: '.linebreak()\n',
@@ -85,7 +100,7 @@ const snippets = [{
     text: '.anything()\n',
     displayText: '.anything()           Matches everything'
 }, {
-    text: '.anythingBut(\'\')\n',
+    text: '.anythingBut(\'\')',
     displayText: '.anythingBut(value)   Matches everything excepting letter in given value'
 }, {
     text: '.withAnyCase()\n',
@@ -97,12 +112,12 @@ const snippets = [{
     text: '.searchOneLine()\n',
     displayText: '.searchOneLine()      Only search in one line (remove modifier "m")'
 }, {
-    text: '.range(\'\', \'\')\n',
+    text: '.range(\'\', \'\')',
     displayText: '.range(from, to)      Add expression to match a range (or multiply ranges)'
 }, {
-    text: '.add(\'\')\n'
+    text: '.add(\'\')'
 }, {
-    text: '.multiple(\'\')\n'
+    text: '.multiple(\'\')'
 }, {
     text: '.or()\n'
 }];
@@ -121,7 +136,7 @@ function snippet() {
         });
         return {
             list: list.length ? list : snippets,
-            from: CodeMirror.Pos(line, start),
+            from: CodeMirror.Pos(line, start+1),
             to: CodeMirror.Pos(line, end)
         }
     }, {
@@ -157,6 +172,7 @@ function compile() {
 
             for (var i = 0; i < lines.length; i++) {
                 while ((result = re.exec($(lines[i]).text())) !== null) {
+                    if(result=="") break;
                     const start = {line: i,ch: result.index};
                     const end = {line: i,ch: result.index + result[0].length};
                     editor.markText(start,end, {className: "cm-matchhighlight"});
