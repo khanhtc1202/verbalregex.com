@@ -172,6 +172,7 @@ function compile() {
 
             for (var i = 0; i < lines.length; i++) {
                 while ((result = re.exec($(lines[i]).text())) !== null) {
+                    if(result=="") break;
                     const start = {line: i,ch: result.index};
                     const end = {line: i,ch: result.index + result[0].length};
                     editor.markText(start,end, {className: "cm-matchhighlight"});
