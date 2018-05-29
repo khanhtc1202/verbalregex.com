@@ -9,6 +9,7 @@ $('#clear').click(function(){
     $("#match_string").val('');
 })
 
+let markers = [];
 
 var editor = CodeMirror.fromTextArea(document.getElementById("match_string"), {
     lineNumbers: false,
@@ -29,7 +30,8 @@ editor.setOption('extraKeys', {
 var codemirror = CodeMirror.fromTextArea(document.getElementById("verbal_regex"), {
     lineNumbers: true,
     styleActiveLine: true,
-    theme: 'dracula'
+    theme: 'dracula',
+    lineWrapping: true
 });
 
 codemirror.on('change', function() {
@@ -44,16 +46,19 @@ codemirror.setCursor({
 
 function showSnippet(cm){
     snippet();
-    var completion = cm.state.completionActive.data;
-    CodeMirror.on(completion, 'pick', function(completion, element) {
-        if(completion.text.indexOf("\n") === -1){
-            const cursor = codemirror.getCursor();
-            const end = cursor.ch;
-            const line = cursor.line;
 
-            codemirror.setCursor({line:line,ch:end-2});
-        }
-    });
+    if(cm.state.completionActive!=null){
+        var completion = cm.state.completionActive.data;
+        CodeMirror.on(completion, 'pick', function(completion, element) {
+            if(completion.text.indexOf("\n") === -1){
+                const cursor = codemirror.getCursor();
+                const end = cursor.ch;
+                const line = cursor.line;
+
+                codemirror.setCursor({line:line,ch:end-2});
+            }
+        });
+    }
 }
 
 codemirror.setOption('extraKeys', {
@@ -156,6 +161,7 @@ function snippet() {
 function compile() {
     verbalRegex = $("#verbal_regex").val();
     tester = VerEx();
+    markers.forEach(marker => marker.clear());
 
     try {
         eval("tester = " + verbalRegex);
@@ -175,22 +181,19 @@ function compile() {
 
         var re = new RegExp(regexPart,flagPart);
 
-        if(regexPart !== "(?:)")
-        {
-            const lines = $($('.CodeMirror-code')[1]).children();
 
-            for (var i = 0; i < lines.length; i++) {
-                while ((result = re.exec($(lines[i]).text())) !== null) {
-                    if(result==="") break;
-                    const start = {line: i,ch: result.index};
-                    const end = {line: i,ch: result.index + result[0].length};
-                    editor.markText(start,end, {className: "cm-matchhighlight"});
-                }
+        const lines = $($('.CodeMirror-code')[1]).children();
+
+        for (var i = 0; i < lines.length; i++) {
+            // console.log(re.exec($(lines[i]).text())['0']);
+            while ((result = re.exec($(lines[i]).text())) !== null) {
+                if(result['0']==="") break;
+                const start = {line: i,ch: result.index};
+                const end = {line: i,ch: result.index + result[0].length};
+                markers.push(editor.markText(start,end, {className: "cm-matchhighlight"}));
             }
         }
-        else{
-            // TODO show infinite error
-        }
+
     }
     catch(e){
         // TODO show error in a more beautiful way
