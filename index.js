@@ -15,7 +15,16 @@ var editor = CodeMirror.fromTextArea(document.getElementById("match_string"), {
     styleActiveLine: true,
     theme: 'dracula',
     lineWrapping: true
-  });
+});
+
+editor.setOption('extraKeys', {
+    'Cmd-Enter': function () {
+        compile();
+    },
+    'Ctrl-Enter': function () {
+        compile();
+    }
+});
 
 var codemirror = CodeMirror.fromTextArea(document.getElementById("verbal_regex"), {
     lineNumbers: true,
@@ -37,7 +46,7 @@ function showSnippet(cm){
     snippet();
     var completion = cm.state.completionActive.data;
     CodeMirror.on(completion, 'pick', function(completion, element) {
-        if(completion.text.indexOf("\n") == -1){
+        if(completion.text.indexOf("\n") === -1){
             const cursor = codemirror.getCursor();
             const end = cursor.ch;
             const line = cursor.line;
@@ -154,7 +163,7 @@ function compile() {
 
         var flagPart = regexString.split("/").pop();
         var regexPart = '';
-        if(flagPart != undefined){
+        if(flagPart !== undefined){
             regexPart = regexString.substr(1,regexString.length - 2 - flagPart.length);
         }
         else{
@@ -166,13 +175,13 @@ function compile() {
 
         var re = new RegExp(regexPart,flagPart);
 
-        if(regexPart != "(?:)")
+        if(regexPart !== "(?:)")
         {
             const lines = $($('.CodeMirror-code')[1]).children();
 
             for (var i = 0; i < lines.length; i++) {
                 while ((result = re.exec($(lines[i]).text())) !== null) {
-                    if(result=="") break;
+                    if(result==="") break;
                     const start = {line: i,ch: result.index};
                     const end = {line: i,ch: result.index + result[0].length};
                     editor.markText(start,end, {className: "cm-matchhighlight"});
