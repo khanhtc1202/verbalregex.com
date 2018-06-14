@@ -423,7 +423,8 @@ table{
 }
 
 .pick-color{
-    background-color: darkkhaki;
+    background-color: #ef3952;
+    border-radius: 5px;
 }
 
 /*textarea::-webkit-scrollbar {*/
