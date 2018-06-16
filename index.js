@@ -10,6 +10,8 @@ jQuery(document).keydown(function(event) {
     }
 );
 
+const hintText = ["Press Ctrl / Cmd + Enter for compiling","Press Ctrl / Cmd + E for showing code auto complete"];
+
 $("#compile").click(function(){
     compile();
 })
@@ -186,3 +188,11 @@ function compile() {
         alert("Error on converting verbal string to Regex");
     }
 }
+
+var count = 0;
+setInterval(function(){
+    count = count + 1;
+    count = count % 2;
+
+    $("#usage-hint").text(hintText[count]);
+}, 3000);
