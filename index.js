@@ -14,7 +14,7 @@ const hintText = ["Press Ctrl / Cmd + Enter for compiling","Press Ctrl / Cmd + E
 
 $("#compile").click(function(){
     compile();
-})
+});
 
 $('#clear').click(function(){
     $("#regex").val('');
@@ -22,9 +22,9 @@ $('#clear').click(function(){
 
     $("#match_string").val('');
     $('#match_string').highlightWithinTextarea('update');
-})
+});
 
-var codemirror = CodeMirror.fromTextArea(document.getElementById("verbal_regex"), {
+const codemirror = CodeMirror.fromTextArea(document.getElementById("verbal_regex"), {
     lineNumbers: true,
     styleActiveLine: true,
     theme: 'dracula',
@@ -156,12 +156,12 @@ function snippet() {
 }
 
 function compile() {
-    verbalRegex = $("#verbal_regex").val();
-    tester = VerEx();
+    let verbalRegex = $("#verbal_regex").val();
+    let tester = VerEx();
 
     try {
         eval("tester = " + verbalRegex);
-        regexString = tester.toString();
+        let regexString = tester.toString();
 
         var flagPart = regexString.split("/").pop();
         var regexPart = '';
