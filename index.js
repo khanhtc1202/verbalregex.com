@@ -1,38 +1,41 @@
+jQuery(document).keydown(function(event) {
+        // If Control or Command key is pressed and the S key is pressed
+        // run save function. 83 is the key code for S.
+        if((event.ctrlKey || event.metaKey) && event.which == 13) {
+            // Save Function
+            event.preventDefault();
+            compile();
+            return false;
+        }
+    }
+);
+
+const hintText = ["Press Ctrl / Cmd + Enter for compiling","Press Ctrl / Cmd + E for showing code auto complete"];
+
 $("#compile").click(function(){
     compile();
-})
+});
 
 $('#clear').click(function(){
     $("#regex").val('');
     $("#flag").val('');
 
     $("#match_string").val('');
-})
-
-let markers = [];
-
-var editor = CodeMirror.fromTextArea(document.getElementById("match_string"), {
-    lineNumbers: false,
-    styleActiveLine: true,
-    theme: 'dracula',
-    lineWrapping: true
+    $('#match_string').highlightWithinTextarea('update');
 });
 
-editor.setOption('extraKeys', {
-    'Cmd-Enter': function () {
-        compile();
-    },
-    'Ctrl-Enter': function () {
-        compile();
-    }
-});
-
-var codemirror = CodeMirror.fromTextArea(document.getElementById("verbal_regex"), {
+const codemirror = CodeMirror.fromTextArea(document.getElementById("verbal_regex"), {
     lineNumbers: true,
     styleActiveLine: true,
     theme: 'dracula',
     lineWrapping: true
 });
+
+$('#match_string').highlightWithinTextarea({
+    highlight: '',
+    className: 'pick-color'
+});
+
 
 codemirror.on('change', function() {
     codemirror.save();
@@ -67,12 +70,6 @@ codemirror.setOption('extraKeys', {
     },
     'Ctrl-E': function (cm) {
         showSnippet(cm);
-    },
-    'Cmd-Enter': function () {
-        compile();
-    },
-    'Ctrl-Enter': function () {
-        compile();
     }
 });
 
@@ -93,8 +90,8 @@ const snippets = [{
     text: '.any(\'\')',
     displayText: '.any(value)           Shorthand for anyOf'
 }, {
-    text: '.linebreak()\n',
-    displayText: '.linebreak()          Matches any linebreak'
+    text: '.lineBreak()\n',
+    displayText: '.lineBreak()          Matches any linebreak'
 }, {
     text: '.br()\n',
     displayText: '.br()                 Shorthand for linebreak()'
@@ -159,13 +156,12 @@ function snippet() {
 }
 
 function compile() {
-    verbalRegex = $("#verbal_regex").val();
-    tester = VerEx();
-    markers.forEach(marker => marker.clear());
+    let verbalRegex = $("#verbal_regex").val();
+    let tester = VerEx();
 
     try {
         eval("tester = " + verbalRegex);
-        regexString = tester.toString();
+        let regexString = tester.toString();
 
         var flagPart = regexString.split("/").pop();
         var regexPart = '';
@@ -181,19 +177,10 @@ function compile() {
 
         var re = new RegExp(regexPart,flagPart);
 
-
-        const lines = $($('.CodeMirror-code')[1]).children();
-
-        for (var i = 0; i < lines.length; i++) {
-            // console.log(re.exec($(lines[i]).text())['0']);
-            while ((result = re.exec($(lines[i]).text())) !== null) {
-                if(result['0']==="") break;
-                const start = {line: i,ch: result.index};
-                const end = {line: i,ch: result.index + result[0].length};
-                markers.push(editor.markText(start,end, {className: "cm-matchhighlight"}));
-            }
-        }
-
+        $('#match_string').highlightWithinTextarea({
+            highlight: re,
+            className: 'pick-color'
+        });
     }
     catch(e){
         // TODO show error in a more beautiful way
@@ -201,3 +188,11 @@ function compile() {
         alert("Error on converting verbal string to Regex");
     }
 }
+
+var count = 0;
+setInterval(function(){
+    count = count + 1;
+    count = count % 2;
+
+    $("#usage-hint").text(hintText[count]);
+}, 3000);

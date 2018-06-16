@@ -47,6 +47,9 @@
                             <textarea id="verbal_regex" class="text_input input_box">
 VerEx()
 </textarea>
+                            <span class="float-right">
+                                <label class="hint"><b>Usage: </b> <i id = "usage-hint">Press Ctrl / Cmd + E for showing code auto complete</i></label>
+                            </span>
                         </div>
 
                         <div class="col-sm-6">
@@ -55,9 +58,9 @@ VerEx()
                     </div>
                     <div class="row help-row">
                         <div class="col-sm-12">
-                            <span class="test_settings">
-                            <label data-toggle="modal" data-target="#myModal" class="help_button">Help</label>
-                        </span>
+                            <span class="float-right test_settings">
+                                <label data-toggle="modal" data-target="#myModal" class="help_button">Help</label>
+                            </span>
                         </div>
                     </div>
 
@@ -92,6 +95,9 @@ VerEx()
                             <ul>
                                 <li>
                                     <p>Press <code>Ctrl + E</code> or <code>Cmd + E</code> for showing snippet.</p>
+                                </li>
+                                <li>
+                                    <p>Press <code>Ctrl + Enter</code> or <code>Cmd + Enter</code> for compiling to Regular Expression.</p>
                                 </li>
                                 <li>
                                     <p>See more documentation <a target="_blank" href="https://github.com/VerbalExpressions/JSVerbalExpressions/wiki">here.</a></p>
@@ -147,13 +153,13 @@ VerEx()
                                         <td>Shorthand for <code>anyOf</code></td>
                                     </tr>
                                     <tr>
-                                        <td><code>.linebreak()</code></td>
+                                        <td><code>.lineBreak()</code></td>
                                         <td>Matches any linebreak</td>
                                     </tr>
                                     <tr>
                                         <td><code>
                                     .br()</code></td>
-                                        <td>Shorthand for <code>linebreak()</code></td>
+                                        <td>Shorthand for <code>lineBreak()</code></td>
                                     </tr>
                                     <tr>
                                         <td><code>.range(from, to)</code></td>
@@ -205,7 +211,8 @@ VerEx()
         <div class="birdseed">
             <p>Powered by
                 <a href="https://github.com/VerbalExpressions" target="_blank">VerbalExpression</a>,
-                <a href="https://codemirror.net/" target="_blank">Codemirror</a>
+                <a href="https://codemirror.net/" target="_blank">Codemirror</a>,
+                <a href="https://github.com/lonekorean/highlight-within-textarea" target="_blank">highlight-within-textarea</a>
             </p>
             <p>Brought to you by <a href="https://bach.mystories.vn/" target="_blank">BachNX</a> & <a href="https://github.com/khanhtc1202" target="_blank">KhanhTC</a></p>
         </div>
