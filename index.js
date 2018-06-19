@@ -195,4 +195,4 @@ setInterval(function(){
     count = count % 2;
 
     $("#usage-hint").text(hintText[count]);
-}, 3000);
+}, 5000);
