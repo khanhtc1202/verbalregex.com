@@ -155,11 +155,33 @@ function snippet() {
     })
 }
 
+function validateVerbalString(verbalString) {
+    if (verbalString.indexOf(".anything")<10) {
+        throw "Invalid verbal syntax: anything";
+    }
+    if (verbalString.indexOf(".endOfLine")<10) {
+        throw "Invalid verbal syntax: endOfLine";
+    }
+    if (verbalString.indexOf(".searchOneLine")<10) {
+        throw "Invalid verbal syntax: searchOneLine";
+    }
+    if (verbalString.indexOf(".multiple")<10) {
+        throw "Invalid verbal syntax: multiple";
+    }
+    if (verbalString.indexOf(".or")<10) {
+        throw "Invalid verbal syntax: or";
+    }
+    if (verbalString.indexOf(".withAnyCase")<10) {
+        throw "Invalid verbal syntax: withAnyCase";
+    }
+}
+
 function compile() {
     let verbalRegex = $("#verbal_regex").val();
     let tester = VerEx();
 
     try {
+        validateVerbalString(verbalRegex);
         eval("tester = " + verbalRegex);
         let regexString = tester.toString();
 
@@ -184,7 +206,6 @@ function compile() {
     }
     catch(e){
         // TODO show error in a more beautiful way
-        console.log(e);
         alert("Error on converting verbal string to Regex");
     }
 }
