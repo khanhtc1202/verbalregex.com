@@ -156,22 +156,22 @@ function snippet() {
 }
 
 function validateVerbalString(verbalString) {
-    if (verbalString.indexOf(".anything")<10) {
+    if (0<verbalString.indexOf(".anything")<10) {
         throw "Invalid verbal syntax: anything";
     }
-    if (verbalString.indexOf(".endOfLine")<10) {
+    if (0<verbalString.indexOf(".endOfLine")<10) {
         throw "Invalid verbal syntax: endOfLine";
     }
-    if (verbalString.indexOf(".searchOneLine")<10) {
+    if (0<verbalString.indexOf(".searchOneLine")<10) {
         throw "Invalid verbal syntax: searchOneLine";
     }
-    if (verbalString.indexOf(".multiple")<10) {
+    if (0<verbalString.indexOf(".multiple")<10) {
         throw "Invalid verbal syntax: multiple";
     }
-    if (verbalString.indexOf(".or")<10) {
+    if (0<verbalString.indexOf(".or")<10) {
         throw "Invalid verbal syntax: or";
     }
-    if (verbalString.indexOf(".withAnyCase")<10) {
+    if (0<verbalString.indexOf(".withAnyCase")<10) {
         throw "Invalid verbal syntax: withAnyCase";
     }
 }
