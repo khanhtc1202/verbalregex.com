@@ -156,22 +156,22 @@ function snippet() {
 }
 
 function validateVerbalString(verbalString) {
-    if (0<verbalString.indexOf(".anything")<10) {
+    if (verbalString.indexOf("VerEx().anything")>0) {
         throw "Invalid verbal syntax: anything";
     }
-    if (0<verbalString.indexOf(".endOfLine")<10) {
+    if (verbalString.indexOf("VerEx().endOfLine")>0) {
         throw "Invalid verbal syntax: endOfLine";
     }
-    if (0<verbalString.indexOf(".searchOneLine")<10) {
+    if (verbalString.indexOf("VerEx().searchOneLine")>0) {
         throw "Invalid verbal syntax: searchOneLine";
     }
-    if (0<verbalString.indexOf(".multiple")<10) {
+    if (verbalString.indexOf("VerEx().multiple")>0) {
         throw "Invalid verbal syntax: multiple";
     }
-    if (0<verbalString.indexOf(".or")<10) {
+    if (verbalString.indexOf("VerEx().or")>0) {
         throw "Invalid verbal syntax: or";
     }
-    if (0<verbalString.indexOf(".withAnyCase")<10) {
+    if (verbalString.indexOf("VerEx().withAnyCase")>0) {
         throw "Invalid verbal syntax: withAnyCase";
     }
 }
@@ -181,8 +181,8 @@ function compile() {
     let tester = VerEx();
 
     try {
-        validateVerbalString(verbalRegex);
         eval("tester = " + verbalRegex);
+        validateVerbalString(tester);
         let regexString = tester.toString();
 
         var flagPart = regexString.split("/").pop();
