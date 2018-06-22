@@ -157,6 +157,9 @@ function snippet() {
 
 function validateVerbalString(verbalString) {
     verbalString = verbalString.replace("\n","");
+    if (verbalString.indexOf("\'\'")!==-1) {
+        throw "Invalid verbal syntax: missing value";
+    }
     if (verbalString.indexOf("VerEx().anything")===0) {
         throw "Invalid verbal syntax: anything";
     }
