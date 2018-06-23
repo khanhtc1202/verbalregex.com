@@ -221,3 +221,7 @@ setInterval(function(){
 
     $("#usage-hint").text(hintText[count]);
 }, 5000);
+
+const textarea = document.getElementById('match_string');
+tabOverride.autoIndent(false);
+tabOverride.set(textarea);
