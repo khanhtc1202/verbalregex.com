@@ -137,6 +137,12 @@ function snippet() {
     CodeMirror.showHint(codemirror, function() {
         const cursor = codemirror.getCursor();
         const token = codemirror.getTokenAt(cursor);
+        var declineStart = 0;
+
+        if(codemirror.getTokenAt({line:cursor.line,ch:cursor.ch - token.string.length}).string==='.'){
+            declineStart = 1;
+        }
+
         const start = token.string===")" ? token.start+1 : token.start;
         const end = cursor.ch;
         const line = cursor.line;
@@ -147,7 +153,7 @@ function snippet() {
         });
         return {
             list: list.length ? list : snippets,
-            from: CodeMirror.Pos(line, start),
+            from: CodeMirror.Pos(line, start - declineStart),
             to: CodeMirror.Pos(line, end)
         }
     }, {
