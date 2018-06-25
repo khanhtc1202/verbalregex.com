@@ -149,7 +149,7 @@ function snippet() {
         const currentWord = token.string;
         // 入力した文字列をスニペット配列から探す
         const list = snippets.filter(function(item) {
-            return item.text.indexOf(currentWord) >= 0
+            return item.text.toLowerCase().indexOf(currentWord.toLowerCase()) >= 0
         });
         return {
             list: list.length ? list : snippets,
