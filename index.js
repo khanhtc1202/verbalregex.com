@@ -231,3 +231,11 @@ setInterval(function(){
 const textarea = document.getElementById('match_string');
 tabOverride.autoIndent(false);
 tabOverride.set(textarea);
+
+$('#regex').click(function () {
+    this.select();
+});
+
+$('#flag').click(function () {
+    this.select();
+});
