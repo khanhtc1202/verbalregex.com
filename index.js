@@ -102,11 +102,35 @@ const snippets = [{
     text: '.word()\n',
     displayText: '.word()               Matches at least one word'
 }, {
+    text: '.digit()\n',
+    displayText: '.digit()              Matches at least one digit'
+}, {
+    text: '.whiteSpace()\n',
+    displayText: '.whitespace()         Matches at least one whitespace'
+}, {
+    text: '.repeatPrevious()\n',
+    displayText: '.repeatPrevious()     Repeats the previous item exactly n times or between n and m times.'
+}, {
+    text: '.oneOrMore()\n',
+    displayText: '.oneOrMore()          Repeats the previous at least once'
+}, {
+    text: '.beginCapture()\n',
+    displayText: '.beginCapture()       Starts a capturing group'
+}, {
+    text: '.endCapture()\n',
+    displayText: '.endCapture()         Ends a capturing group'
+}, {
     text: '.endOfLine()\n',
     displayText: '.endOfLine()          Append "$" at end of expression'
 }, {
     text: '.startOfLine()\n',
     displayText: '.startOfLine()        Append "^" at start of expression'
+}, {
+    text: '.something()\n',
+    displayText: '.something()          Any character at least one time'
+}, {
+    text: '.somethingBut(\'\')\n',
+    displayText: '.somethingBut(value)  Any character at least one time except for these characters'
 }, {
     text: '.anything()\n',
     displayText: '.anything()           Matches everything'
