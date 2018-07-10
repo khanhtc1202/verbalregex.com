@@ -75,6 +75,9 @@ codemirror.setOption('extraKeys', {
 
 // スニペットの配列
 const snippets = [{
+    text: 'VerEx()',
+    displayText: 'VerEx()               Head of verbal regex string (also used in recursion case)'
+}, {
     text: '.find(\'\')',
     displayText: '.find(value)          Find exactly the given value'
 }, {
