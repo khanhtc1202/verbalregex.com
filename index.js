@@ -75,7 +75,7 @@ codemirror.setOption('extraKeys', {
 
 // スニペットの配列
 const snippets = [{
-    text: 'VerEx()',
+    text: 'VerEx()\n',
     displayText: 'VerEx()               Head of verbal regex string (also used in recursion case)'
 }, {
     text: '.find(\'\')',
@@ -192,6 +192,9 @@ function validateVerbalString(verbalString) {
     verbalString = verbalString.replace("\n","").replace("\t","");
     if (verbalString.indexOf("\'\'")!==-1) {
         throw "Invalid verbal syntax: missing value";
+    }
+    if (verbalString.indexOf("VerEx()VerEx()")>0) {
+        throw "Invalid verbal syntax: VerEx";
     }
     if (verbalString.indexOf("VerEx().anything")===0) {
         throw "Invalid verbal syntax: anything";
