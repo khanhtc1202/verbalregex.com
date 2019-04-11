@@ -51,7 +51,7 @@ function showSnippet(cm){
     snippet();
 
     if(cm.state.completionActive!=null){
-        var completion = cm.state.completionActive.data;
+        let completion = cm.state.completionActive.data;
         CodeMirror.on(completion, 'pick', function(completion, element) {
             if(completion.text.indexOf("\n") === -1){
                 const cursor = codemirror.getCursor();
@@ -164,7 +164,7 @@ function snippet() {
     CodeMirror.showHint(codemirror, function() {
         const cursor = codemirror.getCursor();
         const token = codemirror.getTokenAt(cursor);
-        var declineStart = 0;
+        let declineStart = 0;
 
         if(codemirror.getTokenAt({line:cursor.line,ch:cursor.ch - token.string.length}).string==='.'){
             declineStart = 1;
