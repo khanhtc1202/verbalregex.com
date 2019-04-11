@@ -225,8 +225,8 @@ function compile() {
         eval("tester = " + verbalRegex);
         let regexString = tester.toString();
 
-        var flagPart = regexString.split("/").pop();
-        var regexPart = '';
+        let flagPart = regexString.split("/").pop();
+        let regexPart = '';
         if(flagPart !== undefined){
             regexPart = regexString.substr(1,regexString.length - 2 - flagPart.length);
         }
@@ -237,7 +237,7 @@ function compile() {
         $("#regex").val(regexPart);
         $("#flag").val(flagPart);
 
-        var re = new RegExp(regexPart,flagPart);
+        const re = new RegExp(regexPart,flagPart);
 
         $('#match_string').highlightWithinTextarea({
             highlight: re,
@@ -250,7 +250,7 @@ function compile() {
     }
 }
 
-var count = 0;
+let count = 0;
 setInterval(function(){
     count = count + 1;
     count = count % 2;
