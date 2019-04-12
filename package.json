@@ -1,0 +1,27 @@
+{
+  "name": "verbalregex.com",
+  "version": "1.0.0",
+  "description": "source file of https://verbalregex.com",
+  "main": "index.js",
+  "scripts": {
+    "build": "minify index.js --out-file index.min.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/khanhtc1202/com.git"
+  },
+  "keywords": [
+    "verbal",
+    "regex"
+  ],
+  "author": "khanhtc1202",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/khanhtc1202/com/issues"
+  },
+  "homepage": "https://verbalregex.com",
+  "devDependencies": {
+    "babel-minify": "^0.5.0"
+  }
+}
