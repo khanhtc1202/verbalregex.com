@@ -190,6 +190,9 @@ function snippet() {
 
 function validateVerbalString(verbalString) {
     verbalString = verbalString.replace("\n","").replace("\t","");
+    if (verbalString === "VerEx()") {
+        throw "Invalid verbal syntax: missing method";
+    }
     if (verbalString.indexOf("\'\'")!==-1) {
         throw "Invalid verbal syntax: missing value";
     }
