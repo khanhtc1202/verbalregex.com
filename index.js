@@ -196,7 +196,7 @@ function validateVerbalString(verbalString) {
     if (verbalString.indexOf("\'\'")!==-1) {
         throw "Invalid verbal syntax: missing value";
     }
-    if (verbalString.indexOf("VerEx()VerEx()")>0) {
+    if (verbalString.indexOf("VerEx()VerEx()")>=0) {
         throw "Invalid verbal syntax: VerEx";
     }
     if (verbalString.indexOf("VerEx().anything")===0) {
