@@ -8,7 +8,7 @@
     <link rel="shortcut icon" type="image/png" href="./public/static/verbal-regex.png" />
 
     <link href="./public/jquery.highlight-within-textarea.css" media="screen" rel="stylesheet" type="text/css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
     <link href="./public/index.css" media="screen" rel="stylesheet" type="text/css">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.37.0/addon/hint/show-hint.min.css">
@@ -20,7 +20,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.37.0/addon/hint/show-hint.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.37.0/addon/selection/active-line.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/taboverride@4.0.3/build/output/taboverride.min.js"></script>
-
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-123065796-1"></script>
     <script>
@@ -34,205 +33,205 @@
 
 <body>
 
-    <div id="header">
-        <h1><a href="https://verbalregex.com/">Verbal Regex</a></h1>
-        <h2>Regular Expressions made easy</h2>
-    </div>
+<div id="header">
+    <h1><a href="https://verbalregex.com/">Verbal Regex</a></h1>
+    <h2>Regular Expressions made easy</h2>
+</div>
 
-    <div id="main">
+<div id="main">
 
-        <div id="inner" class="gainlayout">
-            <div id="form_wrapper">
-                <div id="test_and_result">
-                    <div class="row input_title">
-                        <div class="col-sm-6">
-                            <label>Editor:</label>
-                        </div>
-                        <div class="col-sm-6">
-                            <label>Input string:</label>
-                        </div>
+    <div id="inner" class="gainlayout">
+        <div id="form_wrapper">
+            <div id="test_and_result">
+                <div class="row input_title">
+                    <div class="col-sm-6">
+                        <label>Editor:</label>
                     </div>
-                    <div class="row input_text">
-                        <div id="test_string" class="col-sm-6">
+                    <div class="col-sm-6">
+                        <label>Input string:</label>
+                    </div>
+                </div>
+                <div class="row input_text">
+                    <div id="test_string" class="col-sm-6">
                             <textarea id="verbal_regex" class="text_input input_box">
 VerEx()
 </textarea>
-                            <span class="float-right">
+                        <span class="float-right">
                                 <label class="hint"><b>Usage: </b> <i id = "usage-hint">Press Ctrl / Cmd + E for showing code auto complete</i></label>
                             </span>
-                        </div>
-
-                        <div class="col-sm-6">
-                            <textarea id="match_string"></textarea>
-                        </div>
                     </div>
-                    <div class="row help-row">
-                        <div class="col-sm-12">
+
+                    <div class="col-sm-6">
+                        <textarea id="match_string"></textarea>
+                    </div>
+                </div>
+                <div class="row help-row">
+                    <div class="col-sm-12">
                             <span class="float-right test_settings">
                                 <label data-toggle="modal" data-target="#myModal" class="help_button">Help</label>
                             </span>
-                        </div>
                     </div>
-
-                </div>
-                <div class="row input_title regex_below">
-                    <label id="regex_label" htmlFor="regex">Regular expression:</label>
-                </div>
-                <div class="row regex_below flex-container">
-                    <span class="slash">/</span>
-                    <input readonly id="regex" class="input_box" name="regex" tabIndex={1} type="text" />
-                    <span class="slash">/</span>
-                    <input readonly id="flag" class="input_box" name="flag" tabIndex={2} type="text" /><br/>
                 </div>
 
             </div>
-
-            <div class="form_controls">
-                <input type="button" id="compile" value="Compile" />
-                <input type="button" id="clear" value="Clear" />
+            <div class="row input_title regex_below">
+                <label id="regex_label" htmlFor="regex">Regular expression:</label>
             </div>
+            <div class="row regex_below flex-container">
+                <span class="slash">/</span>
+                <input readonly id="regex" class="input_box" name="regex" tabIndex={1} type="text" />
+                <span class="slash">/</span>
+                <input readonly id="flag" class="input_box" name="flag" tabIndex={2} type="text" /><br/>
+            </div>
+
         </div>
-        <div id="myModal" class="modal fade" role="dialog" tabindex='-1'>
-            <div class="modal-dialog">
-                <!-- Modal content-->
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <!--<button type="button" class="close" data-dismiss="modal">&times;</button>-->
-                        <h4 class="modal-title">Usage</h4>
-                    </div>
-                    <div class="modal-body">
-                        <div>
-                            <ul>
-                                <li>
-                                    <p>Press <code>Ctrl + E</code> or <code>Cmd + E</code> for showing snippet.</p>
-                                </li>
-                                <li>
-                                    <p>Press <code>Ctrl + Enter</code> or <code>Cmd + Enter</code> for compiling to Regular Expression.</p>
-                                </li>
-                                <li>
-                                    <p>See more documentation <a target="_blank" href="https://github.com/VerbalExpressions/JSVerbalExpressions/wiki">here.</a></p>
-                                </li>
-                            </ul>
-                            <hr>
-                            <code>VerEx()</code>
-                            <table>
-                                <tbody>
-                                    <tr>
-                                        <td><code>
+
+        <div class="form_controls">
+            <input type="button" id="compile" value="Compile" />
+            <input type="button" id="clear" value="Clear" />
+        </div>
+    </div>
+    <div id="myModal" class="modal fade" role="dialog" tabindex='-1'>
+        <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <!--<button type="button" class="close" data-dismiss="modal">&times;</button>-->
+                    <h4 class="modal-title">Usage</h4>
+                </div>
+                <div class="modal-body">
+                    <div>
+                        <ul>
+                            <li>
+                                <p>Press <code>Ctrl + E</code> or <code>Cmd + E</code> for showing snippet.</p>
+                            </li>
+                            <li>
+                                <p>Press <code>Ctrl + Enter</code> or <code>Cmd + Enter</code> for compiling to Regular Expression.</p>
+                            </li>
+                            <li>
+                                <p>See more documentation <a target="_blank" href="http://verbalexpressions.github.io/JSVerbalExpressions/">here.</a></p>
+                            </li>
+                        </ul>
+                        <hr>
+                        <code>VerEx()</code>
+                        <table>
+                            <tbody>
+                            <tr>
+                                <td><code>
                                     .find(value)</code></td>
-                                        <td>Find exactly the given value</td>
-                                    </tr>
-                                    <tr>
-                                        <td><code>.endOfLine()</code></td>
-                                        <td>append "$" at end of expression</td>
-                                    </tr>
-                                    <tr>
-                                        <td><code>.maybe(value)</code></td>
-                                        <td>0 or 1 times</td>
-                                    </tr>
-                                    <tr>
-                                        <td><code>.startOfLine()</code></td>
-                                        <td>Append "^" at start of expression</td>
-                                    </tr>
-                                    <tr>
-                                        <td><code>.then(value)</code></td>
-                                        <td>Shorthand for <code>find</code></td>
-                                    </tr>
-                                    <tr>
-                                        <td><code>.withAnyCase()</code></td>
-                                        <td>
-                                            Ignore case insensitive (append modifier "i")
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td><code>.stopAtFirst()</code></td>
-                                        <td>Stop at first match (remove modifier "g")</td>
-                                    </tr>
-                                    <tr>
-                                        <td><code>.searchOneLine()</code></td>
-                                        <td>Only search in one line (remove modifier "m")</td>
-                                    </tr>
-                                    <tr>
-                                        <td><code>.anyOf(value)</code></td>
-                                        <td>
-                                            Matches any char in value
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td><code>.any(value)</code></td>
-                                        <td>Shorthand for <code>anyOf</code></td>
-                                    </tr>
-                                    <tr>
-                                        <td><code>.lineBreak()</code></td>
-                                        <td>Matches any linebreak</td>
-                                    </tr>
-                                    <tr>
-                                        <td><code>
+                                <td>Find exactly the given value</td>
+                            </tr>
+                            <tr>
+                                <td><code>.endOfLine()</code></td>
+                                <td>append "$" at end of expression</td>
+                            </tr>
+                            <tr>
+                                <td><code>.maybe(value)</code></td>
+                                <td>0 or 1 times</td>
+                            </tr>
+                            <tr>
+                                <td><code>.startOfLine()</code></td>
+                                <td>Append "^" at start of expression</td>
+                            </tr>
+                            <tr>
+                                <td><code>.then(value)</code></td>
+                                <td>Shorthand for <code>find</code></td>
+                            </tr>
+                            <tr>
+                                <td><code>.withAnyCase()</code></td>
+                                <td>
+                                    Ignore case insensitive (append modifier "i")
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><code>.stopAtFirst()</code></td>
+                                <td>Stop at first match (remove modifier "g")</td>
+                            </tr>
+                            <tr>
+                                <td><code>.searchOneLine()</code></td>
+                                <td>Only search in one line (remove modifier "m")</td>
+                            </tr>
+                            <tr>
+                                <td><code>.anyOf(value)</code></td>
+                                <td>
+                                    Matches any char in value
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><code>.any(value)</code></td>
+                                <td>Shorthand for <code>anyOf</code></td>
+                            </tr>
+                            <tr>
+                                <td><code>.lineBreak()</code></td>
+                                <td>Matches any linebreak</td>
+                            </tr>
+                            <tr>
+                                <td><code>
                                     .br()</code></td>
-                                        <td>Shorthand for <code>lineBreak()</code></td>
-                                    </tr>
-                                    <tr>
-                                        <td><code>.range(from, to)</code></td>
-                                        <td>Add expression to match a range (or multiply ranges)</td>
-                                    </tr>
-                                    <tr>
-                                        <td><code>.tab()</code></td>
-                                        <td>match tab char</td>
-                                    </tr>
-                                    <tr>
-                                        <td><code>.word()</code></td>
-                                        <td>Matches at least one word</td>
-                                    </tr>
-                                    <tr>
-                                        <td><code>.anything()</code></td>
-                                        <td>
-                                            Matches everything
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td><code>.anythingBut(value)</code></td>
-                                        <td>Matches everything excepting letter in given value</td>
-                                    </tr>
-                                    <tr>
-                                        <td><code>
+                                <td>Shorthand for <code>lineBreak()</code></td>
+                            </tr>
+                            <tr>
+                                <td><code>.range(from, to)</code></td>
+                                <td>Add expression to match a range (or multiply ranges)</td>
+                            </tr>
+                            <tr>
+                                <td><code>.tab()</code></td>
+                                <td>match tab char</td>
+                            </tr>
+                            <tr>
+                                <td><code>.word()</code></td>
+                                <td>Matches at least one word</td>
+                            </tr>
+                            <tr>
+                                <td><code>.anything()</code></td>
+                                <td>
+                                    Matches everything
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><code>.anythingBut(value)</code></td>
+                                <td>Matches everything excepting letter in given value</td>
+                            </tr>
+                            <tr>
+                                <td><code>
                                     .add(expression)</code></td>
-                                    </tr>
-                                    <tr>
-                                        <td><code>.multiple(value)</code></td>
-                                    </tr>
-                                    <tr>
-                                        <td><code>.or()</code></td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
+                            </tr>
+                            <tr>
+                                <td><code>.multiple(value)</code></td>
+                            </tr>
+                            <tr>
+                                <td><code>.or()</code></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
 
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                    </div>
                 </div>
-
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
             </div>
-        </div>
-    </div>
 
-    <div id="footer">
-        <div class="birdseed">
-            <p>Powered by
-                <a href="https://github.com/VerbalExpressions" target="_blank">VerbalExpression</a>,
-                <a href="https://codemirror.net/" target="_blank">Codemirror</a>,
-                <a href="https://github.com/lonekorean/highlight-within-textarea" target="_blank">highlight-within-textarea</a>
-            </p>
-            <p>Brought to you by <a href="https://bach.mystories.vn/" target="_blank">BachNX</a> & <a href="https://github.com/khanhtc1202" target="_blank">KhanhTC</a></p>
         </div>
     </div>
+</div>
+
+<div id="footer">
+    <div class="birdseed">
+        <p>Powered by
+            <a href="https://github.com/VerbalExpressions" target="_blank">VerbalExpression</a>,
+            <a href="https://codemirror.net/" target="_blank">Codemirror</a>,
+            <a href="https://github.com/lonekorean/highlight-within-textarea" target="_blank">highlight-within-textarea</a>
+        </p>
+        <p>Brought to you by <a href="https://bach.mystories.vn/" target="_blank">BachNX</a> & <a href="https://github.com/khanhtc1202" target="_blank">KhanhTC</a></p>
+    </div>
+</div>
 </body>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="./public/jquery.highlight-within-textarea.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/verbal-expressions@1.0.0/dist/verbalexpressions.min.js"></script>
 <script src="index.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
 
 </html>
